@@ -1,0 +1,16 @@
+# Fdb version 4
+["xdvipdfmx"] 0 "out/automate.xdv" "out/automate.pdf" "out/automate" 0 -1
+  "out/automate.xdv" 0 -1 0 "xelatex"
+  (generated)
+  "out/automate.pdf"
+  (rewritten before read)
+["xelatex"] 1699338918 "automate.tex" "out/automate.xdv" "automate" 1699339025 2
+  "/usr/share/texlive/texmf-dist/web2c/texmf.cnf" 1642711416 40136 b05acc85e8425979e52682d98a2bcacf ""
+  "/usr/share/texlive/texmf-var/web2c/xetex/xelatex.fmt" 1678201605 5090861 86cde816f8859de6f0f020eb2c772598 ""
+  "automate.tex" 1699291073 1687 0f0084b8fefd785f45c9d00a4c32cecf ""
+  "out/automate.aux" 1699338918 32 3985256e7290058c681f74d7a3565a19 "xelatex"
+  (generated)
+  "out/automate.aux"
+  "out/automate.log"
+  "out/automate.xdv"
+  (rewritten before read)
