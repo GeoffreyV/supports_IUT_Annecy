@@ -1,10 +1,2 @@
 AUTOQCM[VAR:project:pdfform=0]
 
-AUTOQCM[NUM=1=test1]
-
-AUTOQCM[FQ]
-
-AUTOQCM[NUM=2=test2]
-
-AUTOQCM[FQ]
-
