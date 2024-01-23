@@ -1,0 +1,88 @@
+\section{Architecture centralisée ou modulaire et répartie}
+\label{sec:architecture}
+Un système automatisé centralisé consiste en une unique unité centrale qui gère l'ensemble des entrées et des sorties. Cette unité centrale est donc reliée à l'ensemble des capteurs et des actionneurs.
+Dans le domaine qui nous intéresse, l'unité centrale est un automate programmable industriel (API) et pourrait gérer une série d'étapes d'une chaîne de production. 
+
+\begin{minipage}{0.45\linewidth}
+    \paragraph{Avantages}
+    \begin{itemize}
+        \item Un automate unique.
+        \item Architecture de données simple.
+    \end{itemize}
+\end{minipage}%
+%
+\begin{minipage}{0.45\linewidth}
+    \paragraph{Inconvénients}
+    \begin{itemize}
+        \item Nombre d'entrées/sorties important.
+        \item Traitement d'automatisation complexe.
+        \item Maintenance et évolutions difficiles.
+    \end{itemize}
+\end{minipage}
+
+A l'inverse, un système automatisé modulaire et réparti consiste en plusieurs unités centrales qui gèrent chacune une partie des entrées et des sorties. Chaque unité centrale est reliée à un ensemble de capteurs et d'actionneurs. Un protocole de communication est mis en place entre les unités centrales. 
+
+\begin{minipage}{0.45\linewidth}
+    \paragraph{Avantages}
+    \begin{itemize}
+        \item Nombre d'entrées/sorties limité par unité centrale.
+        \item Maintenance et évolutions propres à chaque unité.
+    \end{itemize}
+\end{minipage}%
+%
+\begin{minipage}{0.45\linewidth}
+    \paragraph{Inconvénients}
+    \begin{itemize}
+        \item Architecture de données complexe.
+        \begin{itemize}
+            \item Orientation des données.
+            \item Perte de la sémantique des données qu'il faut reconstruire (union, chevauchement, \dots).
+        \end{itemize}
+        \item Protocole de communication à mettre en place.
+    \end{itemize}
+\end{minipage}
+
+%% TODO: Insérer des images des différentes architectures %%% 
+
+\paragraph{Critères de choix}
+Le choix entre une architecture centralisée ou modulaire ainsi que les matériels et logiciels à utiliser se feront en fonction de différents critères : 
+\begin{itemize}
+    \item Nombre d'entrées/sorties TOR.
+    \item Nombre d'entrées/sorties analogiques.
+    \item Communications à mettre en place entre les unités centrales (protocoles, nombres).
+    \item Maintenance et évolution.
+    \item Interconnexion avec le Cloud (4.0).
+    \item Puissance de calcul nécessaire.
+    \item Boucle de régulation intégrée ou non.
+    \item Coût (matériel, chaîne de développement, \dots).
+    \item Langages IEC 61131-3 supportés.
+    \item Les extensions de ces langages pouvant conduire à une programmation orientée objet.
+\end{itemize}
+
+
+%%% TODO: Réorganiser cette partie %%%
+%%% TODO: Ajouter une figure architecture modulaire avec bus %%%
+
+\section{Le système d'exploitation}
+L'automate industriel programmable embarque un système d'exploitation temps réel. Ce système d'exploitation est un logiciel qui permet de gérer les ressources matérielles de l'automate (processeur, mémoire, entrées/sorties, \dots) et de fournir des services aux applications (gestion des tâches, gestion des communications, \dots). 
+
+Pour programmer efficacement et correctement un automate, il est nécessaire de comprendre, au moins sommairement, le fonctionnement du système d'exploitation.
+
+\UPSTIinfo[Système temps réel]{
+    Un système d'exploitation temps réel garantit un temps de réponse maximum à toute requête ou événement matériel. 
+
+    Ce type de système d'exploitation est utilisé dans les systèmes embarqués, les automates programmables, les systèmes de contrôle-commande, \dots En résumé, dans tous les domaines où la réactivité à un événement externe est primordiale.
+}
+
+\subsection{Propriétés du système d'exploitation d'un API}
+Un système d'exploitation d'un API possède les propriétés suivantes : 
+\begin{description}
+    \item[Temps réel : ] par la mise en place d'un chien de garde (watchdog).
+    \item[Interruptible : ] les tâches peuvent être interrompues par une tâche de \textbf{priorité supérieure} parce que l'événement qu'elle traite est \textbf{fugitif} ou d'\textbf{importance} pour l'application.
+    \item[Mono/Multi-tâche : ] Plusieurs tâches peuvent être exécutées en parallèle. 
+    \item[Accès facilité aux entrées/sorties].
+    \item[Accès facilité à la mémoire : ] Permet de partager des données entre les tâches, de gérer les accès concurrents à la mémoire, \dots
+    \item[Interaction avec le programme utilisateur]. 
+\end{description}
+
+Les événements sont capturés.
