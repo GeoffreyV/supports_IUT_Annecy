@@ -1,5 +1,7 @@
-\section{Architecture centralisée ou modulaire et répartie}
+\section{Architecture d'un système automatisé}
 \label{sec:architecture}
+\subsection{Architecture matérielle}
+\label{subsec:architecture_materielle}
 Un système automatisé centralisé consiste en une unique unité centrale qui gère l'ensemble des entrées et des sorties. Cette unité centrale est donc reliée à l'ensemble des capteurs et des actionneurs.
 Dans le domaine qui nous intéresse, l'unité centrale est un automate programmable industriel (API) et pourrait gérer une série d'étapes d'une chaîne de production. 
 
@@ -63,7 +65,7 @@ Le choix entre une architecture centralisée ou modulaire ainsi que les matérie
 %%% TODO: Réorganiser cette partie %%%
 %%% TODO: Ajouter une figure architecture modulaire avec bus %%%
 
-\section{Le système d'exploitation}
+\subsection{Le système d'exploitation}
 L'automate industriel programmable embarque un système d'exploitation temps réel. Ce système d'exploitation est un logiciel qui permet de gérer les ressources matérielles de l'automate (processeur, mémoire, entrées/sorties, \dots) et de fournir des services aux applications (gestion des tâches, gestion des communications, \dots). 
 
 Pour programmer efficacement et correctement un automate, il est nécessaire de comprendre, au moins sommairement, le fonctionnement du système d'exploitation.
@@ -79,10 +81,15 @@ Un système d'exploitation d'un API possède les propriétés suivantes :
 \begin{description}
     \item[Temps réel : ] par la mise en place d'un chien de garde (watchdog).
     \item[Interruptible : ] les tâches peuvent être interrompues par une tâche de \textbf{priorité supérieure} parce que l'événement qu'elle traite est \textbf{fugitif} ou d'\textbf{importance} pour l'application.
-    \item[Mono/Multi-tâche : ] Plusieurs tâches peuvent être exécutées en parallèle. 
-    \item[Accès facilité aux entrées/sorties].
+    \item[Mono/Multi-tâche : ] Plusieurs tâches peuvent être exécutées de façon apparemment simultanée.  
+    \item[Accès facilité aux entrées/sorties.]
     \item[Accès facilité à la mémoire : ] Permet de partager des données entre les tâches, de gérer les accès concurrents à la mémoire, \dots
     \item[Interaction avec le programme utilisateur]. 
 \end{description}
 
-Les événements sont capturés.
+Les événements sont capturés par des fonctions appelées \textbf{event handlers}. Ces fonctions sont automatiquement appelées par le système d'exploitation lorsqu'un événement défini se produit.
+
+
+\UPSTIinfo[Système Multitâches]{
+    Un système multitache permet d'éxécuter plusieurs tâches "en même temps". En réalité, une stratégie de priorité des tâches est mis en place. Selon le nombre de processeur présents et le nombre de tâches, elles seront exécutées en parallèle ou en alternance.
+}
