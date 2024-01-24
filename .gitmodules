@@ -1,0 +1,3 @@
+[submodule "UPSTI"]
+	path = UPSTI
+	url = https://github.com/GeoffreyV/UPSTI.git
