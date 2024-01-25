@@ -111,6 +111,7 @@ Pour chaque type de données, le tableau suivant précise son empreinte mémoire
         \hline
     \end{tabular}
     \caption{Empreinte mémoire et règles de nommage des types de données natifs}
+    \label{tab:types_donnees}
 \end{table}
 
 \subsubsection{Les types de données de datation}
@@ -131,3 +132,114 @@ Pour chaque type de données, le tableau suivant précise son empreinte mémoire
     \end{tabular}
     \caption{Empreinte mémoire et règles de nommage des types de données de datation}
 \end{table}
+
+\subsubsection{Les tableaux}
+Sous l'environnement CoDeSys, il est possible de déclarer des tableaux de variables. Ils peuvent être de dimension 1, 2 ou 3. Aussi, et contrairement au langage C, il est possible de définir le premier et le dernier indice. \textbf{Ainsi, le premier indice d'un tableau n'est pas forcément 0.} 
+
+\UPSTIinfo[Déclaration d'un tableau]{La déclaration d'un tableau se fait à l'aide de la syntaxe suivante : \\~<nom> : ARRAY [<ll1>..<ul2>|,<ll2> <ul2>|,<ll3>..<ul3>] OF <type>;~. \\Avec ~<lli>~ la borne inférieure et ~<uli>~ la borne supérieure de la dimension i. }
+
+Notre convention de nommage veut que l'on ajoute le prefix ~a<dim><type>~ à la déclaration d'un tableau. Avec ~<dim>~ le nombre de dimensions et ~<type>~ le préfixe correspondant à celui des éléments du tableau (Cf Table \ref{tab:types_donnees}).
+
+Par exemple, pour définir un tableau ~tab~ de taille 10 de type ~WORD~ et un tableau ~tab2~ de taille 20x10 de type ~INT~, on écrira :
+\begin{lstlisting}[language=ST]
+VAR 
+    a1wtab : ARRAY [0..9] OF WORD;
+    a2itab2 : ARRAY [1..20, 1..10] OF INT;
+END_VAR
+\end{lstlisting}
+
+Il est possible de récupérer le premier et le dernier indice d'un tableau à l'aide des fonctions ~LOWER_BOUND(<array_name>,<dim>)~ et ~UPPER_BOUND(<array_name>,<dim>)~, respectivement.
+
+\UPSTIinfo[Tableau à longueur variable]{
+    Lorsqu'un tableau est donné en ~VAR_IN_OUT~ d'une fonction, d'un bloc fonction ou d'une méthode, il est possible de ne pas préciser la taille du tableau par la syntaxe ~<nom> : ARRAY [*|, *|, *] OF <type>~. Dans ce cas, le tableau est dit à longueur variable. Il est possible de récupérer la taille du tableau à l'aide de la fonction ~SIZEOF(<array_name>)~.
+
+    Par exemple, pour définir un tableau ~tab~ de dimension 1 et de taille variable de type ~WORD~, on écrira :\\~a1wtab : ARRAY [*] OF WORD;~
+}
+
+\subsubsection{Les structures}
+\begin{UPSTIinfor}{Définition d'une structure}
+    La définition d'une structure se fait à l'aide de la syntaxe suivante : 
+    \begin{lstlisting}[language=ST]
+TYPE <struct_name> :
+    STRUCT
+        <nom1> : <type1>;
+        <nom2> : <type2>;
+        ...
+        <nomi> : <typei>;
+    END_STRUCT
+END_TYPE\end{lstlisting}
+
+    Avec ~<nomi>~ le nom de la variable et ~<typei>~ le type de la variable. 
+\end{UPSTIinfor}
+Sous l'environnement CoDeSys, il est possible de déclarer des structures de variables. 
+Notre convention de nommage veut que l'on ajoute le prefix ~T~ au nom d'une variable de type structure et ~m_<data_type><member_name>~ au nom d'un membre de la structure.
+
+Par exemple, pour définir une structure ~TVerin~ contenant deux membres ~m_xSorti~ et ~m_xRENTRE~ de type ~BOOL~, on écrira : 
+\begin{lstlisting}[language=ST]
+TYPE TVerin :
+    STRUCT
+        m_xSorti : BOOL;
+        m_xRENTRE : BOOL;
+    END_STRUCT
+END_TYPE\end{lstlisting}
+
+Dans une structure uniquement, il est possible de déclarer des membres de type ~BIT~ afin de ne réserver qu'un seul bit mémoire (contrairement au type BOOL qui réserve 1 octet mémoire). Cela peut permettre d'assigner un nom à différents bits d'un registre, par exemple. 
+
+\paragraph{Accès aux membres d'une structure : }
+Il est possible d'accéder aux membres d'une structure à l'aide de la syntaxe ~<struct_name>.<member_name>~. Par exemple, pour accéder au membre ~m_xSorti~ de la structure ~enrVerin1~ de type ~TVerin~, on écrira ~enrVerin1.m_xSorti~.
+
+
+\paragraph{Héritage : }
+Le mot clé ~EXTENDS~ permet de définir une structure héritant d'une autre structure. La structure fille hérite de tous les membres de la structure mère auxquels elle peut ajouter ses propres membres. La syntaxe de cet héritage simple est alors : 
+
+\begin{lstlisting}[language=ST]
+TYPE <struct_fille> EXTENDS <struct_mere> :
+    STRUCT
+        <nom_n+1> : <type_n+1>;
+        <nom_n+2> : <type_n+2>;
+        ...
+    END_STRUCT
+END_TYPE\end{lstlisting}
+
+\subsubsection{Les énumérations}
+Une énumération est un type permettant de nommer des constantes entières. Elle augmente la lisibilité du code et permet de le rendre plus robuste. On peut par exemple définir une énumération ~ETAT~ contenant les constantes ~ETAT\_OUVERT~, ~ETAT\_FERME~, ~ETAT\_EN\_COURS~ et ~ETAT\_ERREUR~. Chaque ETAT correspond à une valeur entière que le développeur ne connait pas forcément. 
+
+Par défaut, le premier élément de l'énumération vaut 0 et chaque élément suivant vaut l'élément précédent + 1. Il est possible de modifier cette valeur en utilisant l'opérateur ~|:=~. Par défaut, le type des valeurs de chaque élément est ~INT~. 
+
+\begin{UPSTIinfor}{Définition d'une énumération}
+    La définition d'une énumération se fait à l'aide de la syntaxe suivante : 
+    \begin{lstlisting}[language=ST]
+TYPE <enum_name> :
+    (
+        <nom1> |:= <valeur1>,
+        <nom2> |:= <valeur2>,
+        ...
+        <nomi> |:= <valeuri>
+    )|<base_data_type>|:= <valeur_par_defaut>;
+END_TYPE\end{lstlisting}
+\end{UPSTIinfor}
+
+Par exemple, pour définir une énumération ~ETAT~ contenant les constantes ~ETAT\_OUVERT~, ~ETAT\_FERME~, ~ETAT\_EN\_COURS~ et ~ETAT\_ERREUR~, on écrira :
+\begin{lstlisting}[language=ST]
+TYPE ETAT :
+    (
+        ETAT_OUVERT,
+        ETAT_FERME,
+        ETAT_EN_COURS,
+        ETAT_ERREUR
+    ):= ETAT_OUVERT;
+END_TYPE\end{lstlisting}
+
+Voici alors un exemple de déclaration, d'initialisation et d'utilisation d'une variable de type ~ETAT~ :
+\begin{lstlisting}[language=ST]
+VAR
+    etat : ETAT;
+END_VAR
+etat := ETAT_FERME;
+IF etat = ETAT_FERME THEN
+    (* Faire quelque chose *)
+END_IF\end{lstlisting}
+
+\UPSTIattention[Noms de constante identiques]{
+    Si deux types énumération contiennent des constantes de même nom, il est alors impératif de préciser le type d'énumération. Par exemple, si on définit une énumération ~ETAT~ contenant les constantes ~ETAT\_OUVERT~, ~ETAT\_FERME~, ~ETAT\_EN\_COURS~ et ~ETAT\_ERREUR~ et une énumération ~ETAT\_VERIN~ contenant les constantes ~ETAT\_OUVERT~, ~ETAT\_FERME~, ~ETAT\_EN\_COURS~ et ~ETAT\_ERREUR~, il faudra alors écrire ~ETAT.ETAT\_OUVERT~ et ~ETAT\_VERIN.ETAT\_OUVERT~ pour différencier les deux constantes.
+}
