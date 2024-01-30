@@ -71,7 +71,7 @@ Sous l'environnement CoDeSys, il est possible de déclarer des tableaux de varia
 
 \UPSTIinfo[Déclaration d'un tableau]{La déclaration d'un tableau se fait à l'aide de la syntaxe suivante : \\~<nom> : ARRAY [<ll1>..<ul2>|,<ll2> <ul2>|,<ll3>..<ul3>] OF <type>;~. \\Avec ~<lli>~ la borne inférieure et ~<uli>~ la borne supérieure de la dimension i. }
 
-Notre convention de nommage veut que l'on ajoute le prefix ~a<dim><type>~ à la déclaration d'un tableau. Avec ~<dim>~ le nombre de dimensions et ~<type>~ le préfixe correspondant à celui des éléments du tableau (Cf Table \ref{tab:types_donnees}).
+Notre convention de nommage veut que l'on ajoute le prefixe ~a<dim><type>~ à la déclaration d'un tableau. Avec ~<dim>~ le nombre de dimensions et ~<type>~ le préfixe correspondant à celui des éléments du tableau (Cf Table \ref{tab:types_donnees}).
 
 Par exemple, pour définir un tableau ~tab~ de taille 10 de type ~WORD~ et un tableau ~tab2~ de taille 20x10 de type ~INT~, on écrira :
 \begin{lstlisting}[language=ST]
@@ -105,7 +105,7 @@ END_TYPE\end{lstlisting}
     Avec ~<nomi>~ le nom de la variable et ~<typei>~ le type de la variable. 
 \end{UPSTIinfor}
 Sous l'environnement CoDeSys, il est possible de déclarer des structures de variables. 
-Notre convention de nommage veut que l'on ajoute le prefix ~T~ au nom d'une variable de type structure et ~m_<data_type><member_name>~ au nom d'un membre de la structure.
+Notre convention de nommage veut que l'on ajoute le prefixe ~T~ au nom d'une variable de type structure et ~m_<data_type><member_name>~ au nom d'un membre de la structure.
 
 Par exemple, pour définir une structure ~TVerin~ contenant deux membres ~m_xSorti~ et ~m_xRENTRE~ de type ~BOOL~, on écrira : 
 \begin{lstlisting}[language=ST]
@@ -195,7 +195,7 @@ TYPE <union_name> :
 END_TYPE\end{lstlisting}
 \end{UPSTIinfor}
 
-Nos conventions de nommage veulent que l'on ajoute le prefix ~T~ au nom d'une variable de type union et ~m_<data_type><member_name>~ au nom d'un membre de l'union.
+Nos conventions de nommage veulent que l'on ajoute le prefixe ~T~ au nom d'une variable de type union et ~m_<data_type><member_name>~ au nom d'un membre de l'union.
 
 Enfin, des types de données spécifiques sont définis pour les unions : 
 \begin{description}
