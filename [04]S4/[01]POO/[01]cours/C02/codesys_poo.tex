@@ -1,6 +1,4 @@
 \section{La programmation orientée objet sous CodeSys}
-
-
 \begin{UPSTIidee}{Application : Etape d'un grafcet}
     Afin de faciliter la compréhension de cette partie, nous allons construire, tout au long de ce cours, une classe \emph{CStep} qui représente une étape d'un grafcet. Cette classe contiendra les attributs et méthodes suivants :
 
@@ -32,114 +30,16 @@
 
 \end{UPSTIidee}
 
-\subsection{Les classes}
-
-On l'a vu, la notion de classe nous demande de pouvoir créer des attributs et des méthodes. Les attributs sont des variables internes aux classes qui devront être conservées entre deux utilisations d'un objet de cette classe.
-L'utilisation de fonctions (POU FUNCTION) ne serait pas satisfaisante car la durée de vie d'une variable interne à une fonction est limitée à l'exécution de cette fonction.
-
-A l'inverse, un bloc fonctionnel s'utilise après en avoir créé une instance et ses variables internes sont conservées entre d'une utilisation à l'autre. Les POU FB semblent donc adaptées à la création de classes.
-
-\UPSTIaRetenir{Nous utiliserons les blocs fonctions pour implémenter la notion de classe sous CodeSys.}
-
-\begin{UPSTIinfor}{Déclaration d'une classe sous CodeSys}
-    Définir une classe sous CodeSys revient à définir un bloc fonctionnel. Afin de différencier les variables privées (inaccessibles depuis l'extérieur) des attributs publics (accessibles depuis l'extérieur), on utilisera la convention suivante :
-    \begin{itemize}
-        \item Les variables publiques commenceront par \emph{m\_}
-        \item les variables privées n'ont pas de préfixe particulier
-    \end{itemize}
-
-    Ainsi, la déclaration d'une classe \lstinline[language=ST]{<CName>} se fera de la manière suivante :
-    \begin{lstlisting}
-        FUNCTION_BLOCK <CName> (* définition de la classe <CName> *)
-            VAR
-                <type><Name> : <type>; (* variable locale non accessible de l'extérieur *)
-                m_<type><Name> : <type>; (* membre de l'objet accessible de l'extérieur sous certaines conditions*)
-            END_VAR
-    \end{lstlisting}
-\end{UPSTIinfor}
-
-\begin{UPSTIidee}{}
-    Puisqu'elle ne possède que des attributs accessibles, la déclaration de notre classe \emph{CStep} se fera de la manière suivante :
-    \begin{lstlisting}
-FUNCTION_BLOCK FB_CStep
-    VAR
-        m_xActivityBit : BOOL; (* bit d'activité (actif ou non) *)
-        m_tActivationDuration : TIME; (* Stocke le temps d'activation de l'étape *)
-        m_tTaskPeriod : TIME; (* période de la tâche *)
-    END_VAR\end{lstlisting}
-
-    L'instanciation d'un objet de cette classe pourra alors s'écrire \lstinline{Etape1 : FB_CStep;}
-
-    Pour le moment, ces attributs ont été déclarés dans notre classe \emph{CStep} mais ils ne sont pas accessibles depuis l'extérieur (Il est impossible d'évaluer l'expression \lstinline{Etape1.m_xActivityBit}). Ces variables sont "coincées" à l'intérieur de notre bloc fonction. Pour les rendre accessibles, nous allons utiliser l'objet \lstinline{PROPERTY} proposé par CodeSys. 
-\end{UPSTIidee}
-
-\subsection{L'objet PROPERTY (propriété)}
-L'objet \lstinline{PROPERTY} est un outil proposé par CodeSys pour la programmation orientée objet. Il permet de définir des attributs (variables) propres à un contexte avec un niveau d'accessibilité paramétrable (publique, privée, protégée ou interne).
-
-Cela signifie que l'on peut définir des variables à l'intérieur d'une classe qui pourront être accessibles depuis l'extérieur de la classe par l'intermédiaire de méthodes appelées \emph{accesseurs}.
-
-\begin{UPSTIinfor}{Les accesseurs}
-    Il existe deux types d'accesseurs : GET et SET. 
-    \begin{description}
-        \item[GET] : Permet de lire la valeur d'une variable
-        \item[SET] : Permet d'écrire la valeur d'une variable
-    \end{description}
-\end{UPSTIinfor}
-
-Une propriété est donc un objet que l'on associe à une POU. On décrit ensuite ses accesseur pour définir comment lire ou écrire la valeur de la propriété.
-
-\begin{UPSTIidee}{}
-    
-\end{UPSTIidee}
+\input{codesys/classes.tex}
+\input{codesys/properties.tex}
+\input{codesys/methods.tex}
+\input{codesys/interfaces.tex}
+\input{codesys/pointeurs.tex}
+\input{codesys/constructeur.tex}
+\input{codesys/application.tex}
 
 
 
-
-\subsection{Méthodes}
-L'objet \lstinline{METHOD} est un outil proposé par CodeSys pour la programmation orientée objet. Il permet de définir des méthodes (fonctions) propres à un contexte avec un niveau d'accessibilité paramétrable (publique, privée, protégée ou interne).
-
-Comme une fonction, on peut définir :
-\begin{itemize}
-    \item Des variables d'Entrées, de sorties ou d'entrées-sorties
-    \item Des variables locales à la méthode
-          \begin{itemize}
-              \item La durée de vie de ces variables locales est alors limitée à l'exécution de la méthode
-          \end{itemize}
-\end{itemize}
-
-Par ailleurs, \textbf{une méthode a accès au contexte de l'instance à laquelle elle est associée}. Cela signifie qu'elle a accès aux variables et méthodes de l'objet dont elle dépend.
-
-Enfin, CodeSys autorise la déclaration de \lstinline{METHOD}s dans une interface. Elle devra alors être implémentée dans les classes qui implémentent cette interface.
-
-\UPSTIaRetenir{Les méthodes des classes que nous définirons seront des méthodes assocées au bloc fonction concerné.}
-
-\begin{UPSTIidee}{Les méthodes de la classe CStep}
-    Les méthodes de la classe \emph{CStep} seront définies dans le bloc fonctionnel \emph{FB\_CStep}. Elles seront donc des méthodes associées à ce bloc fonctionnel.
-
-    \begin{minipage}[t]{.5\linewidth}
-        \paragraph{Méthodes}
-        \begin{itemize}
-            \item \textbf{MInit} : Méthode appelée à l'initialisation du programme
-            \item \textbf{MActivate} : active l'étape
-            \item \textbf{MDeactivate} : désactive l'étape
-        \end{itemize}
-    \end{minipage}%
-    \begin{minipage}[t]{.5\linewidth}
-        \begin{lstlisting}
-            METHOD MInit : BOOL
-            VAR_INPUT
-            END_VAR
-            VAR_OUTPUT
-            END_VAR
-            VAR
-            END_VAR
-            // Code de la méthode
-            // ...
-            // Fin du code de la méthode
-            END_METHOD
-        \end{lstlisting}
-    \end{minipage}
-\end{UPSTIidee}
 
 
 
