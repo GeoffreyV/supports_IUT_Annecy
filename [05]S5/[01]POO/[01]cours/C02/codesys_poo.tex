@@ -1,0 +1,47 @@
+\section{La programmation orientée objet sous CodeSys}
+\begin{UPSTIidee}{Application : Etape d'un grafcet}
+    Afin de faciliter la compréhension de cette partie, nous allons construire, tout au long de ce cours, une classe \emph{CStep} qui représente une étape d'un grafcet. Cette classe contiendra les attributs et méthodes suivants :
+
+    \begin{minipage}{.45\linewidth}
+        \paragraph{Attributs}
+        \begin{itemize}
+            \item \textbf{m\_xActivityBit} : bit d'activité (actif ou non)
+                  \begin{itemize}
+                      \item Accessible en lecture uniquement
+                  \end{itemize}
+            \item \textbf{m\_tActivationDuration} : Stocke le temps d'activation de l'étape
+                  \begin{itemize}
+                      \item Accessible en lecture uniquement
+                  \end{itemize}
+            \item \textbf{m\_tTaskPeriod} : période de la tâche
+                  \begin{itemize}
+                      \item Accessible en lecture et en écriture
+                  \end{itemize}
+        \end{itemize}
+    \end{minipage}%
+    \begin{minipage}{.45\linewidth}
+        \paragraph{Méthodes}
+        \begin{itemize}
+            \item \textbf{MInit} : Méthode appelée à l'initialisation du programme
+            \item \textbf{MActivate} : active l'étape
+            \item \textbf{MDeactivate} : désactive l'étape
+        \end{itemize}
+    \end{minipage}
+
+\end{UPSTIidee}
+
+\input{codesys/classes.tex}
+\input{codesys/properties.tex}
+\input{codesys/methods.tex}
+\input{codesys/interfaces.tex}
+\input{codesys/pointeurs.tex}
+\input{codesys/constructeur.tex}
+\input{codesys/application.tex}
+
+
+
+
+
+
+
+

@@ -1,0 +1,43 @@
+
+\subsection{Mise en œuvre de la solution UniVALplc}
+
+La mise en œuvre d'UniVALplc repose sur l'importation des fichiers \texttt{.eds} et sur l'ajout de la bibliothèque client UniVALplc dans \textit{Control Expert}. Ces opérations nécessitent des droits d'administrateur sur les stations de travail.
+
+\subsubsection{Importation des Fichiers EDS et de la Bibliothèque de Types}
+
+\begin{enumerate}
+    \item Exécuter le programme de mise à jour de la bibliothèque de types sous \textit{Control Expert} en mode administrateur.
+    \item Importer le fichier \texttt{FAMILY.DCS} pour ajouter la bibliothèque UniVALplc à l'environnement de développement.
+\end{enumerate}
+
+\subsection{Configuration des Réseaux}
+
+Après avoir configuré les interfaces IP des coupleurs \texttt{BMX NOC 0401.2}, il est essentiel de respecter l'ordre d'ajout des équipements sur le réseau \texttt{NOC\_ETHIP\_ROBOT}, afin de valider le plan d'adressage mémoire.
+
+Les équipements suivants doivent être ajoutés dans cet ordre :
+\begin{itemize}
+    \item Baie CS9 (\texttt{uniVALplc v4.6 - CS9 Adapter}).
+    \item Contrôleur M221 (\texttt{TM221\_for\_Scara}).
+\end{itemize}
+
+Vérifiez que les adresses IP attribuées correspondent bien au plan d'adressage défini précédemment (figure 1).
+
+\subsection{Communication via Ethernet/IP}
+
+\subsubsection{Configuration des Sections de Programme}
+
+Deux sections de programme sont à créer dans la tâche principale (\textit{Mast}) :
+\begin{itemize}
+    \item \textbf{ReadEthIpRobot} : cette section lira les données du robot à l'aide du bloc fonctionnel \texttt{VAL\_ReadAxesGroup} et l'état de l'interface HMI à l'aide du bloc \texttt{FB\_ReadHmi}.
+    \item \textbf{WriteEthIpRobot} : cette section fournira les informations de supervision à l'HMI et écrira les commandes de mouvement du robot avec le bloc \texttt{VAL\_WriteAxesGroup}.
+\end{itemize}
+
+Le contrôle de l'exécution des blocs fonctionnels sera assuré par les bits de santé (\texttt{HEALTH\_BITS\_IN[0]}) provenant de la baie CS9 et du contrôleur M221.
+
+\subsubsection{Compilation et Tests}
+
+\begin{enumerate}
+    \item Compiler et transférer l'application sur l'API.
+    \item Mettre en \textit{RUN} l'automate et vérifier la communication via la table d'animation, en observant l'état de santé de la baie CS9 et du contrôleur M221.
+    \item Sur l'interface HMI, visualiser l'état du robot et agir sur les éléments de commande (boutons, voyants, etc.).
+\end{enumerate}
