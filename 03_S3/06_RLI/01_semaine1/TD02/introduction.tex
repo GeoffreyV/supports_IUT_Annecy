@@ -1,0 +1,90 @@
+
+
+On s'intéresse dans ce TD à la rénovation de la gestion technique du siège d'Audiens situé à Vanves et construit en 2005. Le bâtiment propose 24000 m² de locaux répartis sur 6 niveaux.
+
+Un extrait du CCTP (Cahier des Clauses Techniques Particulières) est donné en annexe. Il présente les exigences du client en termes de gestion technique du bâtiment. Certaines questions y feront référence. 
+
+\section{Architecture du réseau}
+
+\UPSTIquestion{Quels sont les réseaux proposés dans le CCTP, page 10, pour la GTB ?}
+\UPSTIquestion{En vous aidant d'internet si nécessaire, expliquer à quoi servent habituellement chacun de ces réseaux.}
+%\UPSTIquestion{Lequel de ces réseaux allez-vous utiliser pour la gestion technique de l'énergie électrique ?}
+%\UPSTIquestion{Lequel de ces réseaux allez-vous utiliser pour le contrôle-commande de la partie CVC ?}
+%\UPSTIquestion{Lequel ou lesquels de ces réseaux allez-vous utiliser pour la supervision ?}
+
+\section{Gestion de l'éclairage}
+La plupart des informations concernant l'éclairage est donné en page 15 du CCTP.
+
+Le document n'impose pas l'utilisation d'un bus pour l'éclairage.
+
+
+\UPSTIquestion{Quel est le type de réseau généralement utilisé pour la gestion de l'éclairage ?}
+
+
+\UPSTIquestion{Quels sont les équipements proposés pour la gestion de l'éclairage ?}
+\UPSTIquestion{Quelles sont les fonctions demandées pour l'éclairage ?}
+\UPSTIquestion{Quel serait, pour les fonctions demandées, l'intérêt d'utiliser un bus pour l'éclairage ?}
+\UPSTIquestion{Quelles sont les fonctionnalités supplémentaires que vous pourriez proposer pour justifier une solution comprenant un bus ?}
+\UPSTIquestion{Le document n'impose pas de niveau d'éclairage. En cherchant sur internet la réglementation d'éclairage de la RE2020, que proposez-vous comme niveaux d'éclairage minimum dans les bureaux, dans les couloirs, dans les parking ?}
+3\UPSTIquestion{On recommande une puissance d’éclairage entre 6 et 12 W/m². Chaque étage ayant une surface de 4000 m² et chaque lampe faisant environ 100W, combien de luminaires seront nécessaires ?}
+\UPSTIquestion{Combien de luminaires peut-on installer sur un même bus DALI ?} 
+
+\UPSTIquestion{Un étage comprend environ 250 luminaires. Quelle solution proposez-vous ?}
+
+Le bus DALI v2 permet d'y accoupler des capteurs multifonction : (luminosité, présence, réception télécommande) et des boutons poussoirs. Ces capteurs et boutons sont alimentés par le bus.
+
+\UPSTIquestion{Donnez un schéma synoptique du réseau DALI d'un étage comprenant :}
+\begin{itemize}
+	
+
+\item un automate WAGO avec une ou des bornes DALI,
+\item le réseau électrique 230 Vac,
+\item 5 branches de 50 ballasts DALI (ne pas dessiner les 250 ballasts!),
+\item l'alimentation 18 Vdc DALI
+\item 5 ensembles de 4 capteurs multifonctions
+
+\end{itemize}
+
+\section{Programmation}
+Pour une salle de projection, on propose le cahier des charges suivant :
+
+\UPSTIboiteCentrale{Cahier des charges : Salle de projection}{
+    \begin{itemize}
+        \item L'appui sur un bouton poussoir \textbf{ixBpLuminaire} permet d'allumer ou d'éteindre la salle. 
+        \item Un appui long sur le bouton poussoir permet de faire varier l'intensité lumineuse de la salle.
+        \begin{itemize}
+			\item Alternativement, l'appui long fera varier l'intensité vers le haut ou vers le bas.
+		\end{itemize}
+    \end{itemize}}
+
+\UPSTIquestion{A partir de l'annexe, expliquer le principe de fonctionnement du bloc \textit{FbDALI\_DimmEasy}.}
+
+\UPSTIinfo[bReferenceadress1 et bReferenceaddress2]{La variable \textbf{bReferenceaddress1} ne sera utilisée que dans le cas d'un adressage par groupe. Elle sert à spécifier un luminaire de référence dans le groupe. Ce luminaire pourra être interrogé pour connaitre la valeur de l'intensité lumineuse du groupe. \textbf{bReferenceaddress2} est donnée pour assurer une redondance.}
+
+\UPSTIquestion{Écrire un programme, en langage CFC (Blocs fonctions), permettant de répondre au cahier des charges.}
+
+\UPSTIquestion{Écrire ce même programme en ST}
+
+\UPSTIquestion{A partir de votre cours et du tableau suivant, donner la trame envoyé par le coupleur DALI pour récupérer l'intensité lumineuse actuelle du luminaire.}
+
+
+\begin{table}[h!t]
+    \begin{tabular}{|c|c|c|}
+        \hline
+        \textbf{Commande} & \textbf{Code opération} & \textbf{Description} \\
+        \hline
+        \textbf{OFF} & 0x00 & Eteindre le luminaire \\
+        \textbf{UP} & 0x01 & Augmenter l'intensité lumineuse \\
+        \textbf{DOWN} & 0x02 & Diminuer l'intensité lumineuse \\
+        \textbf{STEP UP} & 0x03 & Augmenter l'intensité lumineuse par palier \\
+        \textbf{STEP DOWN} & 0x04 & Diminuer l'intensité lumineuse par palier \\
+        \hline
+        \textbf{QUERY STATUS} & 0x90 & Demander l'état du luminaire \\
+        \textbf{QUERY LAMP POWER ON} & 0x93 & Demander si le luminaire est allumé \\
+        \textbf{QUERY ACTUAL LEVEL} & 0xA0 & Demander l'intensité lumineuse actuelle \\
+        \textbf{QUERY MAX LEVEL} & 0xA1 & Demander l'intensité lumineuse maximale \\
+        \textbf{QUERY MIN LEVEL} & 0xA2 & Demander l'intensité lumineuse minimale \\\hline
+    \end{tabular}
+    \caption{Quelques commandes DALI et leur code opération}
+\end{table}
+

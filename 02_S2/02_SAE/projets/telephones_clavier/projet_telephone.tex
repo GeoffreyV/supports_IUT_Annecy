@@ -1,0 +1,44 @@
+\documentclass[TP, noCustomPackages]{UPSTI_Document}
+\input{../../../../preamble_IUT.tex}
+\input{../../../preamble_semestre.tex}
+\input{../../preamble_module.tex}
+\input{preamble.tex}
+
+\newcommand{\UPSTItitre}{Détournement d'un téléphone à clavier}
+
+\documentVersion{E}
+\newcommand{\UPSTInumeroVersion}{1}
+\begin{document}
+\begin{figure}[h!bt]
+    \centering
+    \includegraphics[width=.4\textwidth, trim= 0mm 10mm 0mm 100mm, clip]{images/telephone-Socotel-S63.jpg}
+    \caption{Socotel S63}
+\end{figure}
+
+
+Matériel à disposition : 
+\begin{itemize}
+    \item Un téléphone ancien à clavier. 
+\end{itemize}
+
+\begin{UPSTIactivite}[2][Composition d'un numéro de téléphone][][][Cahier des charges]
+    L'utilisateur doit pouvoir composer un numéro de téléphone en sur le clavier. Le numéro composé s'affichera sur le terminal de la liaison série. Au bout de 10 chiffres ou si le téléphone est raccroché, une nouvelle ligne permettra de composer un nouveau numéro.
+
+    Si le téléphone est raccroché, le clavier ne doit pas être pris en compte.
+\end{UPSTIactivite}
+
+\begin{UPSTIactivite}[2][Faire sonner le téléphone][][][Cahier des charges]
+    Lorsque le téléphone est raccroché, la composition d'un chiffre doit faire sonner le téléphone un nombre de fois égal à la valeur du chiffre composé.
+    Chaque sonnerie doit durer 1 seconde et être séparée de la suivante par une pause de 1 seconde.
+\end{UPSTIactivite}
+
+\begin{UPSTIactivite}[4][Audio][][][Cahier des charges]
+    Lorsque le téléphone est décroché, l'utilisateur doit pouvoir entendre un son de fréquence \SI{440}{Hz} tant qu'il n'a pas composé de numéro.
+    Une fois un numéro complet composé, le téléphone doit émettre un son de fréquence \SI{440}{Hz} pendant 1 seconde puis un message vocal doit être diffusé.
+\end{UPSTIactivite}
+
+\begin{UPSTIactivite}[4][ Enregistrement][][][Cahier des charges]
+    Cahier des charges 3 + Enregistrement d'un message. 
+\end{UPSTIactivite}
+
+\end{document}

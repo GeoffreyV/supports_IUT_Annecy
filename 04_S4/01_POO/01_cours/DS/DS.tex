@@ -1,0 +1,87 @@
+\documentclass[QCM, noCustomPackages]{UPSTI_Document}
+\input{../../../../preamble_IUT.tex}
+\input{../../../preamble_Semestre.tex}
+\input{../../preamble_module.tex}
+\input{preamble.tex}
+
+\documentVersion{E}
+\newcommand{\UPSTInumeroVersion}{0}
+
+
+\newcommand{\sujet}{
+\exemplaire{1}{%
+\UPSTIbuildPage
+
+%%% debut de l'en-tête des copies :  
+\begin{center}
+\noindent{}\fbox{\vspace*{3mm}
+         \Large\bf\nom{} \prenom{}\normalsize{}% 
+          \vspace*{3mm}
+      }
+\end{center}
+
+
+\begin{center}\em
+Durée : 60 minutes.
+
+  Aucun document n'est autorisé.
+  L'usage de la calculatrice est interdit.
+
+  % Les questions faisant apparaître le symbole \multiSymbole{} peuvent
+  % présenter zéro, une ou plusieurs bonnes réponses. Les autres ont
+  % une unique bonne réponse.
+
+  % Des points négatifs pourront être affectés à de \emph{très
+  %   mauvaises} réponses.
+\end{center}
+\vspace{1ex}
+%%% fin de l'en-tête
+
+\input{introduction.tex}
+\input{questionCours.tex}
+\input{verins.tex}
+\input{mesures.tex}
+
+
+\section{Questions}
+\subsection{Question de cours}
+\restituegroupe{question-cours}
+\subsection{La classe Vérin}
+On propose de créer une classe abstraite \emph{CVerin} dont hériteront les classes \emph{CVerinSimpleEffet} et \emph{CVerinDoubleEffet}.
+
+\restituegroupe{verins}
+
+\section{Mesures}
+Le poste de mesure prend en entrées les sorties du capteurs DIA afin de donner comme état de sortie la taille de la pièce mesurée. On s'intéresse au constructeur d'état de ce poste de mesure.
+
+\restituegroupe{mesures}
+
+ 
+
+
+\AMCassociation{\id}
+
+%\AMCaddpagesto{3}
+	  }
+}
+
+
+%%%%§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
+
+\begin{document}
+%\UPSTIcompileVars
+%%%Options
+\AMCrandomseed{1237893}
+
+\def\AMCformQuestion#1{{\sc Question #1 :}}
+
+\setdefaultgroupmode{withoutreplacement}
+%%% Fin Options
+
+%%% groupes
+
+%%%% fin des groupes
+
+\csvreader[head to column names]{liste.csv}{}{\sujet}
+
+\end{document}
