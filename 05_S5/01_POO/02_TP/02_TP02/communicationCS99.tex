@@ -1,0 +1,45 @@
+
+\subsection{Communication CS99}
+Dans cette section, nous allons créer les sous-programmes en charge de la communication avec la baie CS9. 
+On propose, pour cela, d'ajouter deux sous-programmes à notre projet avec les noms et rôles suivants : 
+\begin{enumerate}
+    \item Une section \texttt{ReadEthIpRobot}, \textbf{première section à être exécutée}, elle aura pour rôle :
+    \begin{enumerate}
+        \item Lecture des données du robot via le bloc fonctionnel \texttt{VAL\_ReadAxesGroup}
+        \item Lecture des informations depuis l'IHM via le bloc fonctionnel \texttt{BF\_ReadHmi}
+    \end{enumerate} 
+    \item Une section \texttt{WriteEthIpRobot}, \textbf{dernière section à être exécutée}, elle aura pour rôle :
+    \begin{enumerate}[resume]
+        \item Écriture des informations vers l'IHM via le bloc fonctionnel \texttt{BF\_WriteHmi}
+        \item Écriture des données du robot via le bloc fonctionnel \texttt{VAL\_WriteAxesGroup}
+    \end{enumerate}
+\end{enumerate}
+
+Les blocs fonctionnels \texttt{VAL\_ReadAxesGroup} et \texttt{VAL\_WriteAxesGroup} sont fournis par la bibliothèque \texttt{UnivalPlc} et sont donc déjà disponibles. 
+En revanche, les blocs fonctionnels \texttt{BF\_ReadHmi} et \texttt{BF\_WriteHmi} ont été créés par l'équipe enseignante et doivent être importés dans le projet. 
+
+Pour cela, ce TP suivra les étapes suivantes : 
+\begin{enumerate}
+    \item Importation des blocs fonctionnels nécessaires (HMI et CS9)
+    \item Réservation des variables 
+    \item Instanciation des blocs fonctionnels
+    \item Création des sections \texttt{ReadEthIpRobot} et \texttt{WriteEthIpRobot}
+    \begin{itemize}
+        \item Appel des blocs de lecture et d'écriture dans les sections respectives. 
+    \end{itemize}
+    \item Vérification du bon fonctionnement de la communication
+\end{enumerate}
+
+\begin{UPSTIManipulation}[Importation des blocs fonctionnels HMI]
+    \UPSTIetape{\textbf{Clique-droit->Importer} sur le dossier \texttt{Type FB dérivés} dans l'arborescence du projet.}
+    \UPSTIetape{Sélectionner les fichiers \texttt{FB\_ReadHmi.xdb} et \texttt{FB\_WriteHmi.xdb} dans le dossier \path{U:\Documents\BUT\GEII\ModulesS5\Automatisme_Pour_Robotique\Scara}}
+    \UPSTIetape{Si l'application vous le demande, \textbf{Garder tout} puis valider.}
+\end{UPSTIManipulation}
+    
+
+\begin{UPSTIManipulation}[Communication CS99]
+    \UPSTIetape{Créer les sous-programmes décrits ci-dessus et les ordonner afin qu'ils soient exécutés dans l'ordre voulu.}
+\end{UPSTIManipulation}
+
+
+
