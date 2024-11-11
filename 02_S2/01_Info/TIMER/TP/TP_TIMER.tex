@@ -1,0 +1,58 @@
+\documentclass[TP, noCustomPackages]{UPSTI_Document}
+\input{../../../../preamble_IUT.tex}
+\input{../../../preamble_semestre.tex}
+\input{../../preamble_module.tex}
+\input{preamble.tex}
+
+\documentVersion{E}
+\newcommand{\UPSTInumeroVersion}{1}
+\begin{document}
+\section{Préparation}
+\subsection{Révisions}
+\begin{UPSTIpreparation}[4][Cahier des charges à rédiger][Révisions - \SI{10}{min}]
+    \UPSTIquestion{Ecrire un cahier des charges qu'un de vos camarade devra implémenter en TP.}
+
+    Ce cahier des charges doit utiliser au minimum une entrée analogique, une entrée logique, une LED et une sortie console.
+    \vspace{5cm}
+\end{UPSTIpreparation}
+
+\subsection{Compteurs et timers}
+
+
+La première page de la documentation, indiquant les principaux périphériques et fonctionnalité comporte la phrase suivante :
+\emph{Two 8-bit Timer/Counters with Separate Prescaler and Compare Mode}
+
+\UPSTIquestion{Quel est l'intérêt que les prescalers et comparateurs soient séparés d'un timer à l'autre ?}
+
+\section{Révisions}
+
+\UPSTIboiteCentrale{Cahier des charges : Entrées et sorties logiques}{
+    \begin{itemize}
+        \item La diode D0 est allumée si le bouton poussoir BP0 est appuyé et le bouton poussoir BP1 est relâché.
+        \item La diode D1 est allumée si la tension au bornes du potentiomètre est supèrieure à \SI{1.5}{V}
+        \item La diode D2 est allumée si le bouton poussoir BP1 est appuyé pendant \SI{2}{s}
+    \end{itemize}
+}
+
+\begin{UPSTIactivite}[4][Entrées/sorties Analogique et logique][Révisions - \SI{10}{min}]
+    À partir du cahier des charges ci-dessus :
+    \UPSTIetape{Implémenter le cahier des charges en utilisant les fonctions développées dans les TPs précédents.}
+\end{UPSTIactivite}
+
+
+\section{Time}
+
+Le tableau suivant présente les registre des timers du ATmega2560 :
+
+\begin{center}
+    \begin{tabular}{|c|c|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|}
+        \hline
+        Timer & Registre & \multicolumn{8}{c}{Valeurs des bits}                     \\
+        \hline
+        \multirow[c]{2}{*}{1}     & TCCR1A   &  COM1A1 & COM1A0 & COM1B1 & COM1B0 & COM1C1     & COM1C0      & WGM11  & WGM10  \\\hline
+        & & & & & & & & & \\\hline
+
+    \end{tabular}
+\end{center}
+
+\end{document}

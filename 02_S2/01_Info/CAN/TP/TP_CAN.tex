@@ -1,0 +1,184 @@
+\documentclass[TP, noCustomPackages]{UPSTI_Document}
+\input{../../../../preamble_IUT.tex}
+\input{../../../preamble_semestre.tex}
+\input{../../preamble_module.tex}
+\input{preamble.tex}
+
+\documentVersion{E}
+\newcommand{\UPSTInumeroVersion}{1}
+\begin{document}
+\section{Révisions}
+
+\UPSTIboiteCentrale{Cahier des charges : Entrées et sorties logiques}{
+    \begin{itemize}
+        \item La diode D0 est allumée si le bouton poussoir BP0 est appuyé et le bouton poussoir BP1 est relâché.
+        \item La diode D1 est allumée si le bouton poussoir BP0 est relâché et le bouton poussoir BP1 est appuyé.
+        \item La diode D2 est allumée si le bouton poussoir BP0 et le bouton poussoir BP1 sont appuyés.
+        \item La diode D3 est allumée si le bouton poussoir BP0 et le bouton poussoir BP1 sont relâchés.
+    \end{itemize}
+}
+
+\begin{UPSTIactivite}[4][Comportement combinatoire][Révisions - \SI{10}{min}]
+    À partir du cahier des charges ci-dessus : 
+    \UPSTIquestion{Donner l'expression logique de chacune des diodes.}
+    \UPSTIetape{Implémenter le cahier des charges en utilisant les fonctions développées dans le TP 1.}
+\end{UPSTIactivite}
+
+
+\section{La conversion Analogique Numérique}
+
+Ce TP a pour objectif de mettre en œuvre un CAN (Convertisseur Analogique Numérique) pour obtenir une valeur numérique image d'une grandeur analogique.
+Les fonctions que nous développerons dans ce TP pourront être utilisées dans les futurs TPs ou dans vos projets. A ce titre, il est important pour chacune d'entre elles de respecter les bonnes pratiques citées ci-dessous. 
+
+\begin{UPSTIinfor}{Bonnes pratiques à respecter pour chaque fonction}
+    Pour chaque fonction développée, vous devrez documenter chacune de vos fonctions en utilisant la syntaxe vue au TP 1. 
+\begin{todolist}
+    \item respecter les conventions de nommage,
+    \item avoir un nom explicite
+    \item documenter la fonction : 
+    \begin{todolist}
+        \item en précisant son auteur et la date de création,
+        \item en précisant son rôle,
+        \item en précisant les paramètres d'entrée et de sortie,
+    \end{todolist}
+    \item tester la fonction : 
+    \begin{todolist}
+        \item pour un fonctionnement normal
+        \item pour des cas limites
+    \end{todolist}
+\end{todolist}
+
+\end{UPSTIinfor}
+
+\begin{UPSTIactivite}[3][Création d'une bibliothèque][Préparation - \SI{3}{min}]
+    Nous allons, tout d'abord, créer un dossier dans notre bibliothèque personnelle qui contiendra les fonctions liées au CAN.
+    \UPSTIetape{Créer un dossier nommé \texttt{TP2\_CAN} dans le répertoire \texttt{lib/}}.
+    \UPSTIetape{Créer deux fichiers \texttt{can.h} et \texttt{can.cpp} dans le dossier \texttt{lib/TP2\_CAN}}.
+    \UPSTIetape{Dans le fichier \texttt{can.h}, ajouter la ou les ligne(s) permettant d'éviter les inclusions multiples.} 
+\end{UPSTIactivite}
+
+\begin{UPSTIactivite}[][Initialisation du CAN][\SI{10}{min}]
+    \UPSTIquestion{Quelles sont les étapes nécessaires pour initialiser le CAN ?}
+    \UPSTIetape{Définir une fonction permettant l'initialisation du CAN.}
+    
+    \emph{Rappel : le prototype devra se trouver dans le fichier \texttt{can.h} et le corps de la fonction dans le fichier \texttt{can.cpp}.}
+    \UPSTIquestion{Dans quelle partie du programme (\emph{setup()} ou \emph{loop()}) devra-t-on appeler cette fonction ?}
+
+    \emph{Cette fonction ne faisant rien d'autre qu'une initialisation, elle ne pourra pas être testée seule. Nous la testerons donc lors de l'implémentation des autres fonctions.}
+\end{UPSTIactivite}
+
+
+\begin{UPSTIactivite}[][Lecture du CAN sur 8 bits][\SI{15}{min}]
+    \UPSTIquestion{Quelles sont les étapes nécessaires pour lire une valeur analogique ?}
+    \UPSTIetape{Définir une fonction bloquante permettant la lecture d'une valeur analogique sur 8 bits.}
+    \UPSTIquestion{Compléter la checklist suivante pour cette fonction : }
+    \begin{todolist}
+        \item Valeur pour une tension nulle : \dotfill
+        \item Valeur pour une tension maximale : \dotfill
+        \item Valeur à mi-course : \dotfill
+    \end{todolist}
+\end{UPSTIactivite}
+
+\begin{UPSTIactivite}[][Test de la lecture du CAN sur 8 bits][\SI{5}{min}]
+    \UPSTIetape{Écrire un programme permettant de tester la fonction de lecture du CAN en envoyant la valeur lue sur le port série.}
+    \UPSTIquestion{Vérifier les points de la checklist suivante puis faire vérifier par l'enseignant. Si nécessaire, corriger la fonction. }
+    \begin{todolist}
+        \item Les fonctions d'initialisation et de conversion respectent les bonnes pratiques données en préambule. 
+        \item La fonction de lecture donne des valeurs cohérentes avec la position du potentiomètre (cf Activité précédente)
+        \item Sans la fonction d'initialisation, la fonction de lecture ne fonctionne pas.
+    \end{todolist}
+    \UPSTIetape{Archiver le programme dans votre dossier \texttt{TP2\_CAN}.}
+\end{UPSTIactivite}
+
+\begin{UPSTIactivite}[][Mesure du temps de conversion][\SI{5}{min}]
+    \UPSTIquestion{D'après la documentation, quelle est la durée de conversion d'une valeur analogique ?}
+    \UPSTIetape{Dans votre programme, ajouter des lignes permettant de mesurer le temps de conversion de votre fonction et de l'afficher sur le port série.}
+    \UPSTIquestion{Quelle est la durée de conversion mesurée ? Est-elle en accord avec la valeur attendue ?}
+\end{UPSTIactivite}
+
+\begin{UPSTIactivite}[3][Erreur si temps de conversion trop long][\SI{10}{min}]
+    \UPSTIetape{Modifier votre fonction de lecture pour qu'elle renvoie la valeur \si{-1} si le temps de conversion est trop long.}
+\end{UPSTIactivite}
+
+\UPSTIboiteCentrale{Cahier des charges : led selon la valeur lue par le CAN}{
+    \begin{itemize}
+        \item Toutes les diodes sont éteintes si la tension est inférieure à \SI{1}{V}.
+        \item La diode D1 est allumée si la tension est comprise entre \SI{1}{V} et \SI{2}{V}.
+        \item La diode D2 est allumée si la tension est comprise entre \SI{2}{V} et \SI{3}{V}.
+        \item La diode D3 est allumée si la tension est comprise entre \SI{3}{V} et \SI{4}{V}.
+        \item La diode D4 est allumée si la tension est supérieure à \SI{4}{V}.
+    \end{itemize}
+}
+
+\begin{UPSTIactivite}[][LED selon la valeur lue par le CAN][\SI{7}{min}]
+    \UPSTIetape{Implémenter le cahier des charges ci-dessus en utilisant les fonctions développées.}
+\end{UPSTIactivite}
+
+\begin{UPSTIactivite}[][Lecture du CAN sur 10 bits][\SI{15}{min}]
+    \UPSTIquestion{Quelles sont les étapes supplémentaires nécessaires pour lire le résultat sur 10 bits ?}
+    \UPSTIetape{Définir une fonction bloquante permettant la lecture d'une valeur analogique sur 10 bits.}
+    \UPSTIquestion{Compléter la checklist suivante pour cette fonction : }
+    \begin{todolist}
+        \item Valeur pour une tension nulle : \dotfill
+        \item Valeur pour une tension maximale : \dotfill
+        \item Valeur à mi-course : \dotfill
+    \end{todolist}
+    \UPSTIquestion{Vérifier les points de la checklist suivante puis faire vérifier par l'enseignant. Si nécessaire, corriger la fonction. }
+    \begin{todolist}
+        \item La fonction respecte les bonnes pratiques données en préambule. 
+        \item La fonction de lecture donne des valeurs cohérentes avec la position du potentiomètre
+    \end{todolist}
+    \UPSTIetape{Archiver le programme dans votre dossier \texttt{TP2\_CAN}.}
+\end{UPSTIactivite}
+
+\begin{UPSTIactivite}[][Mesure du temps de conversion sur 10 bits][\SI{5}{min}]
+    \UPSTIetape{Mesurer le temps de conversion et le comparer avec la conversion 8 bits}
+\end{UPSTIactivite}
+
+
+\section{Application : Utilisation du Joystick}
+Le Joystick de la carte est possède une résistance différente pour chaque axe. Il est donc possible de mesurer la position du joystick en utilisant le CAN.
+
+\UPSTIboiteCentrale{Cahier des chrges : Utilisation du Joystick}{
+    \begin{itemize}
+        \item La diode D1 est allumée si le joystick est en position basse.
+        \item La diode D2 est allumée si le joystick est en position haute.
+        \item La diode D3 est allumée si le joystick est en position gauche.
+        \item La diode D4 est allumée si le joystick est en position droite.
+    \end{itemize}
+}
+
+\begin{UPSTIactivite}[][Valeurs du Joystick][\SI{15}{min}]
+    \UPSTIetape{Implémenter le cahier des charges ci-dessus.}
+\end{UPSTIactivite}
+
+\section{Création d'une classe}
+\begin{UPSTIactivite}[][Création d'une classe][\SI{20}{min}]
+    \UPSTIquestion{Qu'est-ce qu'une classe ?}
+    \UPSTIquestion{Quels sont les avantages de l'utilisation des classes ?}
+    \UPSTIetape{Créer une classe nommée \texttt{CConvAN10bits} dans le dossier \texttt{lib/TP2\_CAN}.}
+    \UPSTIetape{Définir la fonction d'initialisation du CAN dans cette classe.}
+    \UPSTIetape{Définir la fonction de lecture sur 10 bits du CAN dans cette classe.}
+    \UPSTIetape{Définir le constructeur de cette classe. Il appellera la fonction d'initialisation du CAN.}
+    \UPSTIetape{Tester la classe en utilisant un programme similaire à celui de l'activité précédente.}
+\end{UPSTIactivite}
+
+\begin{UPSTIactivite}[][Affichage de la direction du Joystick][\SI{15}{min}]
+    Le Joystick peut prendre les 8 positions suivantes : 
+    \begin{multicols}{4}
+        \begin{itemize}
+            \item Bas
+            \item Bas-Gauche
+            \item Gauche
+            \item Haut-Gauche
+            \item Haut
+            \item Haut-Droite
+            \item Droite
+            \item Bas-Droite
+        \end{itemize}
+    \end{multicols}
+   
+    \UPSTIetape{Afficher la direction du Joystick sur le port série en utilisant la classe définie.}
+\end{UPSTIactivite}
+
+\end{document}
