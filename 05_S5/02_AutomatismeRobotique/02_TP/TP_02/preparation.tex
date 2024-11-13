@@ -23,7 +23,7 @@ M221 (Îlot E/S, HMI) & 4 octets & 40 octets \\ \hline
 \pagebreak
 
 \subsubsection{Déclaration des Objets}
-
+\label{sec:declarationObjets}
 Le bloc fonctionnel \texttt{VAL\_ReadAxesGroup} nécessite que les données produites par le serveur UniVALplc soient de type \texttt{T\_FromRobot}, afin de les convertir en un objet \texttt{T\_StaeubliRobot}. De même, pour le bloc \texttt{VAL\_WriteAxesGroup}, les données consommées doivent être de type \texttt{T\_ToRobot}.
 
 \begin{UPSTIactivite}[4][Déclaration des objets \texttt{T\_FromRobot} et \texttt{T\_ToRobot}][][][Préparation]
@@ -32,11 +32,8 @@ Le bloc fonctionnel \texttt{VAL\_ReadAxesGroup} nécessite que les données prod
     \item \texttt{fromRobotScara} de type \texttt{T\_FromRobot} (pour les données produites par la baie CS9).
     \item \texttt{toRobotScara} de type \texttt{T\_ToRobot} (pour les données consommées par la baie CS9).
 \end{itemize}}
-\vspace{15cm}
+\vspace{5cm}
 \end{UPSTIactivite}
-
-
-\pagebreak
 Pour le contrôleur M221, les blocs fonctionnels \texttt{FB\_ReadHmi} et \texttt{FB\_WriteHmi} seront utilisés pour gérer les échanges de données avec l'interface HMI.
 
 \begin{UPSTIactivite}[4][Déclaration des objets \texttt{TFromHmi} et \texttt{TToHmi}][][][Préparation]
@@ -45,5 +42,5 @@ Pour le contrôleur M221, les blocs fonctionnels \texttt{FB\_ReadHmi} et \texttt
     \item \texttt{fromHmiScara} de type \texttt{TFromHmi} (pour les données produites par le contrôleur M221).
     \item \texttt{toHmiScara} de type \texttt{TToHmi} (pour les données consommées par le contrôleur M221).
 \end{itemize}}
-\vspace{15cm}
+\vspace{5cm}
 \end{UPSTIactivite}
