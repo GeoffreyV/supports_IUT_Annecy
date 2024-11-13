@@ -3,25 +3,10 @@
 
 \UPSTIattention{Pour ne pas avoir à recommencer en cas de problème, sauvegarder régulièrement le projet.}
 
-\begin{UPSTIManipulation}[Pré-requis]
+\begin{UPSTIVerification}[Pré-requis]
     \UPSTIetape{Vérifier le fonctionnement des manipulations du TP précédent}
-\end{UPSTIManipulation}
+\end{UPSTIVerification}
 
-\subsection{Configurations préalables}
-\subsubsection{Installation de la bibliothèque UniVALplc}
-La mise en œuvre d'UniVALplc repose sur l'importation des fichiers \texttt{.eds} et sur l'ajout de la bibliothèque client UniVALplc dans \textit{Control Expert}. Ces opérations nécessitent des droits d'administrateur sur les stations de travail.
-Ainsi, ces manipulations ont été faites en amont du TP. 
-
-\begin{UPSTIinfor}{Importation des Fichiers EDS et de la Bibliothèque de Types}
-    \textit{Ces manipulations ont été faites en amont du TP. Cet encart est à titre informatif.}
-    \begin{enumerate}
-        \item Exécuter le programme de mise à jour de la bibliothèque de types sous \textit{Control Expert} en mode administrateur.
-        \item Importer le fichier \texttt{FAMILY.DCS} pour ajouter la bibliothèque UniVALplc à l'environnement de développement.
-    \end{enumerate}
-    \textit{Les fichiers et bibliothèques nécessaires sont disponible dans le dossier \texttt{Scara/uniVALplc/}}
-\end{UPSTIinfor}
-
-\subsubsection{Options du projet}
 \begin{UPSTIConfiguration}[Options du projet]
     \UPSTIetape{Dans \texttt{Outils->Options du projet}, configurer les options suivantes : }
     \begin{itemize}
@@ -43,7 +28,7 @@ Ainsi, ces manipulations ont été faites en amont du TP.
 
 Dans le TP précédent, nous avons configuré le premier coupleur \texttt{BMX NOC 0401.2} pour le réseau du guichet (\texttt{172.16.180.0/24}). Nous allons maintenant configurer le second coupleur pour le réseau \texttt{NOC\_ETHIP\_ROBOT (192.168.0.0/24)}.
 
-\begin{UPSTIManipulation}[Ajout des équipements sur le réseau \texttt{NOC\_ETHIP\_ROBOT}]
+\begin{UPSTIConfiguration}[Ajout des équipements sur le réseau \texttt{NOC\_ETHIP\_ROBOT}]
     \UPSTIetape{Vérifier la configuration de l'adresse IP}
     \begin{itemize}
         \item Ouvrir le \texttt{Navigateur de DTM} (\texttt{Outils->Navigateur de DTM} puis double-clic sur le réseau).
@@ -62,34 +47,43 @@ Dans le TP précédent, nous avons configuré le premier coupleur \texttt{BMX NO
             \item [Gestion des noms de \texttt{DTMs} :] m221Scara
         \end{description}
     \end{itemize}
-\end{UPSTIManipulation}
+    \textit{Après avoir configuré les interfaces IP des coupleurs \texttt{BMX NOC 0401.2}, il est essentiel de respecter l'ordre d'ajout des équipements sur le réseau \texttt{NOC\_ETHIP\_ROBOT}, afin de respecter le plan d'adressage mémoire défini précédemment. }
+\end{UPSTIConfiguration}
+\pagebreak
+\begin{UPSTIConfiguration}[Configuration des adresses des équipements]
+    \UPSTIetape{Configurer les adresses des équipements}
+    \begin{enumerate}
+        \item Double-cliquer sur le coupleur réseau \texttt{NOC\_ETHIP\_ROBOT}.
+        \item Pour chacun des appareils ajoutés, configurer les adresses IP suivantes (\textit{Onglet Paramétrage de l'adresse}) :
+        \begin{itemize}
+            \item \texttt{[003] cs9Scara} : \texttt{192.168.0.10}
+            \item \texttt{[004] m221Scara} : \texttt{192.168.0.11}
+        \end{itemize}
+    \end{enumerate}
+\end{UPSTIConfiguration}
 
-Après avoir configuré les interfaces IP des coupleurs \texttt{BMX NOC 0401.2}, il est essentiel de respecter l'ordre d'ajout des équipements sur le réseau \texttt{NOC\_ETHIP\_ROBOT}, afin de valider le plan d'adressage mémoire.
+\begin{UPSTIConfiguration}[Configuration des équipements]
+    \UPSTIetape{Configurer le cs9Scara}
+    \begin{itemize}
+        \item Sur le \texttt{Navigateur de DTM}, double-cliquer sur le \texttt{cs9Scara}.
+        \item Rubrique \texttt{Exclusive Owner} : Paramétrer la périodicité de la tâche Mast. 
+    \end{itemize}
+    \UPSTIetape{Configurer le m221Scara}
+    \begin{itemize}
+        \item Sur le \texttt{Navigateur de DTM}, double-cliquer sur le \texttt{m221Scara}.
+        \item Supprimer le service \texttt{Write To 150} et le remplacer par un service \texttt{Read From 100 / Write To 150}. 
+        \item Vérifier que ce nouveau service offre 4 octets en entrées et 40 octets en sortie, avec une lecture/écriture périodique de \SI{30}{ms}
+    \end{itemize}
+\end{UPSTIConfiguration}
 
-Les équipements suivants doivent être ajoutés dans cet ordre :
-\begin{itemize}
-    \item Baie CS9 (\texttt{uniVALplc v4.6 - CS9 Adapter}).
-    \item Contrôleur M221 (\texttt{TM221\_for\_Scara}).
-\end{itemize}
+\begin{UPSTIVerification}[Vérification de l'espace mémoire]
+    \UPSTIetape{Sauvegarder, Vérifier et Compiler votre application}
+    \UPSTIetape{Dans l'éditeur de données : Vérifier les zones mémoires allouées}
+    \begin{itemize}[label=$\square$]
+        \item \texttt{cs9Scara\_IN : T\_cs9Scara\_IN AT \%MW80}
+        \item \texttt{cs9Scara\_OUT : T\_cs9Scara\_OUT AT \%MW208}
+        \item \texttt{m221Scara\_IN : T\_m221Scara\_IN AT \%MW154}
+        \item \texttt{m221Scara\_OUT : T\_m221Scara\_OUT AT \%MW270}
+    \end{itemize}
+\end{UPSTIVerification}
 
-Vérifiez que les adresses IP attribuées correspondent bien au plan d'adressage défini précédemment (figure 1).
-
-\subsection{Communication via Ethernet/IP}
-
-\subsubsection{Configuration des Sections de Programme}
-
-Deux sections de programme sont à créer dans la tâche principale (\textit{Mast}) :
-\begin{itemize}
-    \item \textbf{ReadEthIpRobot} : cette section lira les données du robot à l'aide du bloc fonctionnel \texttt{VAL\_ReadAxesGroup} et l'état de l'interface HMI à l'aide du bloc \texttt{FB\_ReadHmi}.
-    \item \textbf{WriteEthIpRobot} : cette section fournira les informations de supervision à l'HMI et écrira les commandes de mouvement du robot avec le bloc \texttt{VAL\_WriteAxesGroup}.
-\end{itemize}
-
-Le contrôle de l'exécution des blocs fonctionnels sera assuré par les bits de santé (\texttt{HEALTH\_BITS\_IN[0]}) provenant de la baie CS9 et du contrôleur M221.
-
-\subsubsection{Compilation et Tests}
-
-\begin{enumerate}
-    \item Compiler et transférer l'application sur l'API.
-    \item Mettre en \textit{RUN} l'automate et vérifier la communication via la table d'animation, en observant l'état de santé de la baie CS9 et du contrôleur M221.
-    \item Sur l'interface HMI, visualiser l'état du robot et agir sur les éléments de commande (boutons, voyants, etc.).
-\end{enumerate}
