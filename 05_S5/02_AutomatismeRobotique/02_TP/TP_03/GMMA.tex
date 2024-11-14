@@ -1,0 +1,58 @@
+\section{Gmma : Graphe des modes de marche et d'arrêt}
+
+On propose de mettre en oeuvre une commande hiérarchisée suivant un GEMMA. 
+Dans ce contexte : toute erreur de réseau (NOC\_ETHIP\_CONVOYEUR ou NOC\_ETHIP\_ROBOT) doit être vue comme une panne de la partie opérative et placer le système dans l'état D1.
+Le système reste dans cet état tant que la communication n'est pas rétablie.
+
+\subsection{Mode D1 : Arrêt d'Urgence}
+Ce mode est le premier mode actif lorsque l'automate M340 passe en RUN.
+Dans ce mode : 
+\begin{itemize}
+    \item Le bras est mis hors puissance (MC\_GroupPower). Sous réserve que : 
+    \begin{itemize}
+        \item La bibliothèque est initialisée (Status.Initialized) 
+        \item La baie CS9 est prête à recevoir des commandes (Status.Online)
+    \end{itemize}
+    \item Le système de préhension est maintenu dans son état.
+    \item Les bloqueurs du Poste Guichet doivent en interdire l'accès.
+\end{itemize}
+
+\subsection{Mode D2 : Diagnostic/Traitement de la défaillance}
+Ce mode a pour objectif de donner une configuration saine du système. C'est à dire : 
+\begin{enumerate}
+    \item Acquitter les défauts présents (MC\_GroupReset),
+    \item Vider la file des commandes de mouvements (MC\_GroupStop),
+    \item Autoriser de nouvelles commandes de mouvement (MC\_GroupContinue),
+    \item Mettre le bras sous puissance (MC\_GroupPower).
+\end{enumerate}
+
+Pendant ce mode, le guichet est interdit d'accès. La composante rouge de la colonne RVB doit clignoter à la fréquence de 1 Hz.
+
+\subsection{Mode A5 : Remise En Route après Défaillance}
+
+Ce mode sera détaillé dans un prochain TP. Il permettra d'évacuer une pièce restée saisie.
+Pour le moment, on considère que l'opérateur autorise la dépose par le biais du pupitre opérateur (bouton bleu « autorisation de dépose ») et signale que toutes les aires de traitement sont vides (bouton « cuves vides »).
+
+\subsection{Mode A6 : Mise En Conditions Initiales}
+
+On souhaite positionner le robot au-dessus du guichet, prêt à saisir un gobelet sans entraver la circulation des palettes vides ou pleines.
+Les coordonnées cartésiennes dans le repère « world » respectant ces contraintes sont : (X=90, Y=-410, Z=150, RX=-180, RY = 0, RZ =0).
+
+Si la position courante n'est pas celle voulue, on adopte la stratégie suivante :
+\begin{enumerate}
+    \item Monter l'axe J3 en position 150 mm sans modifier la position courante des autres axes.
+    \item Diriger le robot au-dessus du guichet pour terminer le positionnement voulu par une commande de mouvement de type \textbf{articulaire}.
+\end{enumerate}
+Durant toute la durée de ce mode : 
+\begin{itemize}
+    \item Si un arrêt est demandé via le pupitre opérateur : 
+    \begin{itemize}
+        \item Immobiliser le robot tout en maintenant le bras sous puissance.
+        \item Reprendre la course dès que l'arrêt n'est plus actif.
+        \item Ce mode est signalé par l'allumage clignotant rapide (\SI{10}{ms}) du voyant rouge associé au bouton « arrêt demandé » ainsi que de la colonne lumineuse.
+    \end{itemize}
+    \item Le guichet est interdit d'accès. Les deux bloqueurs (BE, BP) sont levés.
+\end{itemize}
+
+\subsection{Mode A1 : Arrêt en conditions initiales}
+Le bras du robot sera immobile mais sous puissance au-dessus du guichet passant. La colonne sera \textit{Cyan} afin d'indiquer à l'opérateur que la cellule est prête pour traiter des pièces en mode automatique s'il le souhaite.

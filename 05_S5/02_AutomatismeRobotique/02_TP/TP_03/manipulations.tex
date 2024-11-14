@@ -1,77 +1,45 @@
+\section{Manipulations}
+\label{sec:manipulations}
+\subsection{Préparation du GMMA}
+\label{subsec:preparation_gmma}
 
-\begin{UPSTIinfor}{Principe de la programmation robot}
-    La mise en oeuvre du robot se fait par l'intermédiaire d'une queue (FIFO - First In First Out) de commande de mouvement. Les commandes seront donc effectuées par le robot dans l'ordre reçu et chacune d'entre elle sera retirée de la queue une fois exécutée. 
-    
-    Pour rappel : 
+Dans notre commande hiérarchisée, un programme principal \texttt{GM\_Gmma} aura pour rôle de gérer les différents modes de marche du robot. C'est celui-ci qui autorisera ou non chaque mode de marche. Pour cela, on utilisera une section par mode de marche. Chacune des sections sera conditionnée à une variable booléenne commandée par le programme principal.
+
+Le Gmma sera mis en oeuvre à l'aide de trois sections exécutés dans l'ordre suivant :
+\begin{enumerate}
+    \item \texttt{GM\_Gmma\_Init}
     \begin{itemize}
-        \item L'exécution séquentielle des commandes de mouvement dans la pile débute dès que le bras est mis sous puissance (\texttt{MC\_GroupPower}).
-        \item Il est possible d'ajouter des commandes de mouvement à tout moment 
+        \item Lors du premier cycle automate : 
         \begin{itemize}
-            \item Mouvement en cours
-            \item Robot à l'arrêt 
-            \item Bras sous puissance
-            \item Bras hors puissance
-            \item ...
+            \item Initialisation du GMMA lors du premier cycle automate (à l'aide du bloc fonctionnel \texttt{InitChart}),
+            \item Configuration de la période du bit de vie du robot à \SI{150}{ms} au sein de l'objet \texttt{staubliRobotScara},
         \end{itemize}
-        \item Une commande de mouvement sort de la pile dès que sa trajectoire associée est totalement achevée.
-        \item Pour vider la FIFO de toutes les commandes de mouvement empilées, on dispose du bloc fonctionnel \texttt{MC\_GroupStop}.
-        \item L'arrêt immédiat du robot durant l'exécution d'une trajectoire peut se faire 
-        \begin{itemize}
-            \item via le bouton d'arrêt d'urgence (E-Stop)
-            \item par un changement de mode de marche sur la baie (WMS9)
-            \item à l'aide des blocs fonctionnels \texttt{MC\_GroupInterrupt} et \texttt{MC\_GroupStop}.
-        \end{itemize}
-        \item Suite à un arrêt obtenu à l'aide du bloc fonctionnel \texttt{MC\_GroupInterrupt}, il est possible : 
-        \begin{itemize}
-            \item de reprendre les mouvements là où ils ont été stoppés grâce au bloc fonctionnel \texttt{MC\_GroupContinue}
-            \item de les supprimer en vidant la pile (\texttt{MC\_GroupStop} vu précédemment).
-        \end{itemize} 
-        \item Le contenu de la pile des commandes de mouvement est conservé même si le bras est hors puissance. Une mise sous puissance du bras conduira éventuellement à une phase dite de « connexion » faite à petite vitesse pour rejoindre la trajectoire interrompue puis à la reprise des mouvements toujours présents dans la pile.
+        \item Mise en défaut du GMMA en cas d'erreur de communication.
     \end{itemize}
-    
-\end{UPSTIinfor}
-
-
-\begin{center}
-    \begin{tabular}{l|p{10cm}}
-        \textbf{Nom du bloc fonctionnel} & \textbf{Description} \\
-        \hline
-        MC\_GroupInterrupt & Stop the movement of the robot. The robot can continue along the commanded path after MC\_GroupContinue is executed \\
-        MC\_GroupStop & Stop the movement of the robot and flushes all movements that have been commanded \\
-        MC\_GroupContinue & Restart the movement of the robot after it has been stopped by MC\_GroupInterrupt \\
-        MC\_GroupReset & Reset all pending errors reported by the robot \\
-        MC\_GroupPower & Switch ON/OFF the power stage of the robot \\
-    \end{tabular}
-\end{center}
-
-
-\begin{UPSTIinfor}{Téléversement d'un programme}
-    Lorsque l'on télécharge un nouveau programme dans l'automate, la communication entre l'API M340 et la baie CS9 ainsi que celle avec le M221 sont rompues. Il en est de même avec le PFC200. Les bits de vie entretenus par ces communications ne s'effectuant plus : 
+    \item \texttt{GM\_Gmma\_Main}
     \begin{itemize}
-        \item la baie CS9 passe en défaut, interdisant toute commande sauf naturellement celle qui permet d'acquitter ces erreurs (MC\_GroupReset).
-        \item Le M221 est programmé pour faire clignoter à la fréquence de 1 Hz la composante rouge de la colonne qu'il gère.
-        \item Le PFC200 fait passer le poste Guichet en \texttt{non passant} et sa colonne prend la couleur magenta.
+        \item Gestion des différents modes de marche du robot
     \end{itemize}
-
-    Pour la remise en service : 
+    \item \texttt{GM\_Gmma\_Post}
     \begin{itemize}
-        \item Les deux contrôleurs M221 et PFC200 retrouvent leur fonctionnement normal dès que la communication devient opérationnelle.
-        \item Il faut mettre en place une procédure de redémarrage pour la baie CS9 (cf. 2.2°mode D2 : Diagnostic/Traitement de la défaillance).
+        \item Gestion des variables booléennes de chaque mode de marche,
+        \item Fournir l'état du GMMA à l'IHM pour un affichage sur le 7 segments.
     \end{itemize}
-\end{UPSTIinfor}
+\end{enumerate}
 
+\begin{UPSTImanipulation}[Préparation de la structure du programme]
+    Dans un premier temps, nous allons créer le squelette de notre programme avec les différentes sections qui seront complétées tout au long de ce TP.
+    \UPSTIetape{Créer les trois sections de gestion du GMMA.}
+    \UPSTIetape{Réserver une variable booléenne pour chaque mode de marche du robot.}
+    \UPSTIetape{Créer une section par mode de marche. Chaque section sera conditionnée à la variable booléenne correspondante. \texttt{Clic droit -> Caractéristiques -> Condition}}
+\end{UPSTImanipulation}
 
-Les commandes de mouvement de type \textbf{PLC-Open} disponibles sont les suivantes :
-\begin{center}
-    \begin{tabular}{l|l|l}
-        \textbf{Nom du bloc fonctionnel} & \textbf{Description} & \textbf{Type de mouvement} \\
-        \hline
-        MC\_MoveAxisAbsolute & Joint interpolated movement & joint position (T\_JointPos) \\
-        MC\_MoveDirectAbsolute & Joint interpolated movement & cartesian position (T\_CartesianPos) \\
-        MC\_MoveLinearAbsolute & Linear movement & cartesian position (T\_CartesianPos) \\
-        MC\_MoveCircularAbsolute & Circular movement & cartesian position \\
-    \end{tabular}
-\end{center}    
-
-test : \path{\detokenize{\basepath{}}}
+\begin{UPSTImanipulation}[Programmation du GMMA]
+    \UPSTIetape{Dans la section \texttt{GM\_Gmma\_Init}}
+    \begin{itemize}
+        \item Initiliser le GMMA à l'aide du bloc fonctionnel \texttt{InitChart},
+        \item Configurer la période du bit de vie du robot à \SI{150}{ms} au sein de l'objet \texttt{staubliRobotScara},
+    \end{itemize}
+    \UPSTIetape{En cas d'erreur de communication avec le robot, mettre en défaut le GMMA.}
+\end{UPSTImanipulation}
 
