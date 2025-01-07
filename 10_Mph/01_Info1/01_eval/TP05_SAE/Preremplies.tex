@@ -1,0 +1,78 @@
+\documentclass[QCM, noCustomPackages]{UPSTI_Document}
+\input{../../../../preamble_IUT.tex}
+\input{../../../preamble_semestre.tex}
+\input{../../preamble.tex}
+\input{preamble.tex}
+
+\documentVersion{E}
+\newcommand{\UPSTInumeroVersion}{0}
+\newcommand{\UPSTImessage}{test} 
+
+\newcommand{\sujet}{
+\exemplaire{1}{%
+\renewcommand{\UPSTImessage}{\champnom{\nom{} \prenom{} - Groupe \tp{}}} 
+\renewcommand{\UPSTInumeroVersion}{\id{}}
+\UPSTIbuildPage
+\setcounter{figure}{0}
+\setcounter{table}{0}
+%%% debut de l'en-tête des copies : 
+
+% \begin{center}
+% \noindent{}\fbox{\vspace*{3mm}
+%          \champnom{\Large\bf\nom{} \prenom{} - \id{}}\normalsize{}% 
+%           \vspace*{3mm}
+%       }
+% \end{center}
+
+
+\begin{center}\em
+Durée : 7 minutes.
+
+  Aucun document n'est autorisé.
+  L'usage de la calculatrice est interdit.
+
+  % Les questions faisant apparaître le symbole \multiSymbole{} peuvent
+  % présenter zéro, une ou plusieurs bonnes réponses. Les autres ont
+  % une unique bonne réponse.
+
+  % Des points négatifs pourront être affectés à de \emph{très
+  %   mauvaises} réponses.
+\end{center}
+\vspace{1ex}
+%%% fin de l'en-tête
+
+
+%\restituegroupe{eval}
+
+
+\AMCassociation{\id}
+
+\restituegroupe{eval}
+
+%\AMCaddpagesto{3}
+	  }
+}
+
+
+%%%%§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
+
+\begin{document}
+%\UPSTIcompileVars
+%%%Options
+
+\AMCrandomseed{1237893}
+
+\def\AMCformQuestion#1{{\sc Question #1 :}}
+\input{exercices/eval.tex}
+\setdefaultgroupmode{withoutreplacement}
+%%% Fin Options
+
+%\input{exercices/eval.tex}
+
+%%% groupes
+
+%%%% fin des groupes
+
+\csvreader[head to column names,]{liste.csv}{}{\sujet}
+
+\end{document}
