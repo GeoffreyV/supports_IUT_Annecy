@@ -1,0 +1,104 @@
+tp,nom,prenom,mail,id
+A1,ARABI,MARWAN,Marwan.Arabi@etu.univ-savoie.fr,A1-01
+A1,BOUAFIA,LINA,Lina.Bouafia@etu.univ-savoie.fr,A1-02
+A1,BUISSON,ESTEBAN,Esteban.Buisson@etu.univ-savoie.fr,A1-03
+A1,DALMAZ,ENZO,Enzo.Dalmaz@etu.univ-savoie.fr,A1-04
+A1,DELIEUVIN,AUDRIC,Audric.Delieuvin@etu.univ-savoie.fr,A1-05
+A1,DESCOMBES,RAPHAEL,Raphael.Descombes@etu.univ-savoie.fr,A1-06
+A1,DIALLO,MAMADOU ALIMOU,Mamadou-Alimou.Diallo@etu.univ-savoie.fr,A1-07
+A1,DIONE,MAME SEYE,Mame-Seye.Dione@etu.univ-savoie.fr,A1-08
+A1,HENRIQUES,THIBAUD,Thibaud.Henriques@etu.univ-savoie.fr,A1-09
+A1,MBOUEYA,EVER-GOD-JADORE,Ever-God-Jadore.Mboueya@etu.univ-savoie.fr,A1-10
+A1,ROSSETTI,MAXIME,Maxime.Rossetti@etu.univ-savoie.fr,A1-12
+A1,SOLI,MERYEM,Meryem.Soli@etu.univ-savoie.fr,A1-13
+A1,THIVAND,QUENTIN,Quentin.Thivand@etu.univ-savoie.fr,A1-14
+A2,CHORFI,NOUR,Nour.Chorfi@etu.univ-savoie.fr,A2-01
+A2,DEMEURE,THOMAS,Thomas.Demeure@etu.univ-savoie.fr,A2-02
+A2,GULLI,GABRIEL,Gabriel.Gulli@etu.univ-savoie.fr,A2-03
+A2,MAZARI IWATA,ADAM,Adam.Mazari-Iwata@etu.univ-savoie.fr,A2-04
+A2,MONGE,FANTIN,Fantin.Monge@etu.univ-savoie.fr,A2-05
+A2,MORMICHE--MARCONNET,ARTHUR,Arthur.Marconnet-Mormiche@etu.univ-savoie.fr,A2-06
+A2,NIEMET KAMBISSI,JUDICAEL JUNIOR,Judicael-Junior.Niemet-Kambissi@etu.univ-savoie.fr,A2-07
+A2,NOUACER,PAUL,Paul.Nouacer@etu.univ-savoie.fr,A2-08
+A2,SABER,NASSIM,Nassim.Saber@etu.univ-savoie.fr,A2-09
+A2,SAHRAOUI NABIL,WALID,Walid.Sahraoui-Nabil@etu.univ-savoie.fr,A2-10
+A2,SETTI,ZAKARYA,Zakarya.Setti@etu.univ-savoie.fr,A2-11
+A2,VEYDARIER,YOWEN,Yowen.Veydarier@etu.univ-savoie.fr,A2-12
+A2,ZAMZAM,OMAR,Omar.Zamzam@etu.univ-savoie.fr,A2-13
+B1,AGNERAY,PAUL-GERARD-LOUIS,Paul-Gerard-Louis.Agneray@etu.univ-savoie.fr,B1-01
+B1,BEN GHANEM,ELIAS,Elias.Ben-Ghanem@etu.univ-savoie.fr,B1-02
+B1,BENAZIZA,AYMAN,Ayman.Benaziza@etu.univ-savoie.fr,B1-03
+B1,BENKEMOUCHE,WALID,Walid.Benkemouche@etu.univ-savoie.fr,B1-04
+B1,BESSON-MAGDELAIN,HONORE,Honore.Besson-Magdelain@etu.univ-savoie.fr,B1-05
+B1,BRAIZAT,RUDY,Rudy.Braizat@etu.univ-savoie.fr,B1-06
+B1,CATHAND,CYRIL,Cyril.Cathand@etu.univ-savoie.fr,B1-07
+B1,CHABRILLAT,LUCAS,Lucas.Chabrillat@etu.univ-savoie.fr,B1-08
+B1,MADI,KASSEM,Kassem.Madi@etu.univ-savoie.fr,B1-09
+B1,MALFROY,VICTOR,Victor.Malfroy@etu.univ-savoie.fr,B1-10
+B1,MOUSSA MZE,IMAM,Imam.Moussa-Mze@etu.univ-savoie.fr,B1-11
+B1,PONS,LUNA-MARIE,Luna-Marie.Pons@etu.univ-savoie.fr,B1-12
+B1,POPOVIC,ISIDORA,Isidora.Popovic@etu.univ-savoie.fr,B1-13
+B2,CHAILLET ,LOUKA ,Louka.Chaillet@etu.univ-savoie.fr,B2-01
+B2,FERRAZ,ESTEBAN,Esteban.Ferraz@etu.univ-savoie.fr,B2-02
+B2,GAVET,ROMAIN,Romain.Gavet@etu.univ-savoie.fr,B2-03
+B2,GIRIER,QUENTIN,Quentin.Girier@etu.univ-savoie.fr,B2-04
+B2,JANSSEN,YOANN,Yoann.Janssen@etu.univ-savoie.fr,B2-05
+B2,JEDDA,YACINE,Yacine.Jedda@etu.univ-savoie.fr,B2-06
+B2,JOBARD,LOIS,Lois.Jobard@etu.univ-savoie.fr,B2-07
+B2,LATHUILLE,REMI,Remi.Lathuille@etu.univ-savoie.fr,B2-08
+B2,MAACHOUK,ADAM,Adam.Maachouk@etu.univ-savoie.fr,B2-09
+B2,PELLARIN,ROCCO,Rocco.Pellarin@etu.univ-savoie.fr,B2-10
+B2,RAVIER,ALEXANDRE,Alexandre.Ravier@etu.univ-savoie.fr,B2-11
+B2,SENE,CHEIKH TIDIANE,Cheikh-Tidiane.Sene@etu.univ-savoie.fr,B2-12
+B2,VERDENET,LOUIS,Louis.Verdenet@etu.univ-savoie.fr,B2-13
+C1,ABDOU,AMIR-DINE,Amir-Dine.Abdou@etu.univ-savoie.fr,C1-01
+C1,AFONSO,CARLA,Carla.Afonso@etu.univ-savoie.fr,C1-02
+C1,ALI-MOUSSA,ANISS,Aniss.Ali-Moussa@etu.univ-savoie.fr,C1-03
+C1,BAJTOU,NAJLA,Najla.Bajtou@etu.univ-savoie.fr,C1-04
+C1,BARBEY,LEO,Leo.Barbey@etu.univ-savoie.fr,C1-05
+C1,BAUD,THOMAS,Thomas.Baud@etu.univ-savoie.fr,C1-06
+C1,CHARFEDDINE,YANIS,Yanis.Charfeddine@etu.univ-savoie.fr,C1-07
+C1,DELLAMONICA,ADRIEN,Adrien.Dellamonica@etu.univ-savoie.fr,C1-08
+C1,GALAMAND,PIERRE,Pierre.Galamand@etu.univ-savoie.fr,C1-09
+C1,GERMAIN,GABRIEL,Gabriel.Germain@etu.univ-savoie.fr,C1-10
+C1,GERVASONI,PACOME,Pacome.Gervasoni@etu.univ-savoie.fr,C1-11
+C1,MASSON GRUAZ,MAXENCE,Maxence.Masson-Gruaz@etu.univ-savoie.fr,C1-12
+C1,SUBLET,PHILEMON,Philemon.Sublet@etu.univ-savoie.fr,C1-13
+C2,BELLETERRE,MAXIME,Maxime.Belleterre@etu.univ-savoie.fr,C2-01
+C2,GODARD,ALEXANDRE,Alexandre.Godard@etu.univ-savoie.fr,C2-02
+C2,HOCINI,ILIAN,Ilian.Hocini@etu.univ-savoie.fr,C2-03
+C2,JEMAIN-SEGUIN,NATHAN,Nathan.Jemain-Seguin@etu.univ-savoie.fr,C2-04
+C2,LOUZINGOU,JOSUE DEGRACE,Josue-Degrace.Louzingou@etu.univ-savoie.fr,C2-05
+C2,MBAYE,SEGA,Sega.Mbaye@etu.univ-savoie.fr,C2-06
+C2,PONSOT,JULIEN,Julien.Ponsot@etu.univ-savoie.fr,C2-07
+C2,REBOUX,SACHA,Sacha.Reboux@etu.univ-savoie.fr,C2-08
+C2,SENE,FALLOU,Fallou.Sene@etu.univ-savoie.fr,C2-09
+C2,TARTAVEL,BATISTE,Batiste.Tartavel@etu.univ-savoie.fr,C2-10
+C2,TINE,MOUHAMED MOUSTAPHA ,Mouhamed-Moustapha.Tine@etu.univ-savoie.fr,C2-11
+C2,VUILLET,MATIS,Matis.Vuillet@etu.univ-savoie.fr,C2-12
+C2,YANGOU,OWEN,Owen.Yangou@etu.univ-savoie.fr,C2-13
+D1,AALOUANE,SOHAIB,Sohaib.Aalouane@etu.univ-savoie.fr,D1-01
+D1,AHMETOVIC,MUHAMED,Muhamed.Ahmetovic@etu.univ-savoie.fr,D1-02
+D1,ALIM,KAAN,Kaan.Alim@etu.univ-savoie.fr,D1-03
+D1,BENKETIRA,ADEL,Adel.Benketira@etu.univ-savoie.fr,D1-04
+D1,CARDOT BAZA,AITA,Aita.Cardot-Baza@etu.univ-savoie.fr,D1-05
+D1,CLERCIN,DAWOODLEY,Dawoodley.Clercin@etu.univ-savoie.fr,D1-06
+D1,ELLIH,EL HOUSSINE,El-Houssine.Ellih@etu.univ-savoie.fr,D1-07
+D1,GINISTY,NICOLAS,Nicolas.Ginisty-Quezel-Ambrunaz@etu.univ-savoie.fr,D1-08
+D1,GIRARD,LUCAS,Lucas.Girard@etu.univ-savoie.fr,D1-09
+D1,LAGARDETTE,AMELIA,Amelia.Lagardette@etu.univ-savoie.fr,D1-10
+D1,MARCHAND,ETHAN,Ethan.Marchand@etu.univ-savoie.fr,D1-11
+D1,MEFTAH,SABRI,Sabri.Meftah@etu.univ-savoie.fr,D1-12
+D1,MILLOT,QUENTIN,Quentin.Millot@etu.univ-savoie.fr,D1-13
+D2,DEPLACE,LUCAS,Lucas.Deplace@etu.univ-savoie.fr,D2-01
+D2,FERDINAND,VOLMIR,Volmir.Ferdinand@etu.univ-savoie.fr,D2-02
+D2,KANE,MOCTAR,Moctar.Kane@etu.univ-savoie.fr,D2-03
+D2,MORINO,LUCAS,Lucas.Morino@etu.univ-savoie.fr,D2-04
+D2,MOSSIERE,VALENTIN,Valentin.Mossiere-Maulet@etu.univ-savoie.fr,D2-05
+D2,PERRICHOT,REMY,Remy.Perrichot@etu.univ-savoie.fr,D2-06
+D2,PICARD,BENJAMIN,Benjamin.Picard@etu.univ-savoie.fr,D2-07
+D2,ROUX,HUGO,Hugo.Roux@etu.univ-savoie.fr,D2-08
+D2,SOW,HASSMIOU,Hassmiou.Sow@etu.univ-savoie.fr,D2-09
+D2,TWIZEYIMANA,JOEL,Joel.Twizeyimana@etu.univ-savoie.fr,D2-10
+D2,VILLEDIEU,MATTHIAS,Matthias.Villedieu@etu.univ-savoie.fr,D2-11
+D2,VITTORINI-GONNET,JOE,Joe.Vittorini-Gonnet@etu.univ-savoie.fr,D2-12
