@@ -1,0 +1,45 @@
+
+\section{Présentation du système}
+
+Vous travaillez sur une cellule d'\textbf{ouverture et de vidage de cartons}. Elle est utilisée pour vider automatiquement des cartons contenant un produit connu (par exemple, des sachets) sur un convoyeur spécialisé.
+
+Le système est composé de plusieurs sous-systèmes :
+\begin{itemize}
+    \item \textbf{Un convoyeur d'alimentation} qui achemine les cartons fermés vers la zone de traitement.
+    \item \textbf{Un robot 6 axes} muni d'une pince de préhension. 
+    \item \textbf{Ladite pince de préhension} : 
+    \begin{itemize}
+        \item Permet de saisir un carton,
+        \item Est équipée de deux paires de bloqueurs permettant de maintenir les volets du carton ouverts.
+    \end{itemize}
+    \item \textbf{Un poste de découpe}, équipé d’un actionneur de lame, qui découpe le ruban adhésif fermant le carton.
+    \item \textbf{Un poste d'ouverture} permettant de soulever les volets du carton à l’aide de vérins.
+    \item \textbf{Un poste de vidage} où le carton est retourné et vidé.
+    \item \textbf{Un convoyeur de vidage} qui transporte le contenu du carton vers une station aval.
+\end{itemize}
+
+Le système fonctionne de manière cyclique selon les étapes suivantes :
+\begin{enumerate}
+    \item Le robot saisit un carton sur le convoyeur d'alimentation.
+    \item Il le présente au poste de découpe pour sectionner le ruban adhésif.
+    \item Il le présente ensuite au poste d'ouverture :
+    \begin{itemize}
+        \item Les grands volets sont soulevés par le poste d'ouverture,
+        \item Le robot les maintient ouverts avec ses bloqueurs,
+        \item Le robot effectue une rotation pour exposer les petits volets,
+        \item Ceux-ci sont également soulevés, puis maintenus ouverts.
+    \end{itemize}
+    \item Le carton est ensuite amené au poste de vidage :
+    \begin{itemize}
+        \item Une plaque métallique se positionne devant l’ouverture du carton,
+        \item Le robot retourne le carton, le contenu étant retenu par la plaque,
+        \item Il effectue une translation pour déverser le contenu sur le convoyeur,
+        \item Un vérin pneumatique pousse le produit restant sur le convoyeur.
+    \end{itemize}
+\end{enumerate}
+
+\section*{Objectif du devoir}
+
+Ce devoir porte sur la \textbf{modélisation orientée objet} et la \textbf{programmation} du système de préhension. Il se concentre particulièrement sur :
+
+Vous utiliserez les conventions de nommage et les structures proposées à l’IUT. Le raisonnement objet et la capacité à structurer proprement votre code seront des éléments d’évaluation essentiels.

@@ -1,0 +1,59 @@
+\documentclass[QCM, noCustomPackages]{UPSTI_Document}
+\input{../../../../preamble_IUT.tex}
+\input{../../../preamble_semestre.tex}
+\input{../../preamble_module.tex}
+\input{preamble.tex}
+\AMCinterIrep=0pt
+\AMCinterBrep=0pt
+\AMCinterIquest=-1pt
+\AMCinterBquest=-1pt
+\AMCpostOquest=-1pt
+
+\documentVersion{E}
+\newcommand{\UPSTInumeroVersion}{0}
+\newcommand{\UPSTImessage}{test} 
+
+\newcommand{\sujet}{
+\exemplaire{1}{%
+\renewcommand{\UPSTImessage}{\champnom{\nom{} \prenom{} - Groupe \tp{}}} 
+
+\UPSTIbuildPage
+\setcounter{figure}{0}
+\setcounter{table}{0}
+%%% debut de l'en-tête des copies : 
+
+% \begin{center}
+% \noindent{}\fbox{\vspace*{3mm}
+%          \champnom{\Large\bf\nom{} \prenom{} - \id{}}\normalsize{}% 
+%           \vspace*{3mm}
+%       }
+% \end{center}
+
+\UPSTIcritere[1]{c01-exemple}{1.1 Exemple}
+\UPSTIcritere[2]{c02-registres}{1.2 Registres}
+\UPSTIcritere[2]{c03-masques}{1.3 Masques}
+\textbf{---}\\
+\UPSTIcritere[1]{c04-configuration}{2.1 Création du projet}
+\UPSTIcritere[1]{c05-test}{2.6 Test du programme}
+\UPSTIcritere[1]{c06_programme1}{3.5 Premier programme}
+\UPSTIcritere[1]{c07_programme2}{3.6 Deuxième programme}
+\UPSTIcritere[1]{c08_programme3}{3.7 Troisième programme}
+\UPSTIcritere[5]{c100-conventions}{\textbf{Convention de nommage respectées}}
+\textbf{---}\\
+\UPSTIcritere[1]{c09-temps}{4. Vitesse d'exécution. Explication et conclusion}
+\UPSTIcritere[1]{c10-ok}{Validation du schéma}
+\UPSTIcritere[1]{c11-mesureRs}{Mesure de la résistance de sortie}
+\textbf{---}\\
+\UPSTIcritere[1]{c12-GereLed1}{Amélioration de la fonction GereLED}
+\UPSTIcritere[1]{c13-pauseBloquante}{Pause bloquante : Expérience et conclusion}
+
+
+}
+}
+\begin{document}
+\AMCrandomseed{1237893}
+\def\AMCformQuestion#1{{\sc Question #1 :}}
+\csvreader[head to column names,]{etudiants_D.csv}{}{\sujet}
+\end{document}
+
+

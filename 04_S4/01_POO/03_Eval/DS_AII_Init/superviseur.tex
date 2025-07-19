@@ -1,0 +1,17 @@
+\section{Superviseur de cellule}
+Cette section s'intéresse à la classe qui supervise la cellule, chargé de la coordination de l'ensemble des équipements.
+
+Cette partie traite en particulier la mise en conditions initiales de la cellule. 
+On considère ici que chacune des classes possède une mission \lstinline|INIT| qui lance son cycle d'initialisation. On considère également que chacune des classes possède un état \lstinline|INIT| ainsi qu'un état \lstinline|ERROR|.
+
+On propose la liste d'états suivants pour la cellule : 
+\begin{itemize}
+    \item \lstinline|INIT| : la cellule est en phase d'initialisation.
+    \item \lstinline|RUN| : la cellule est en phase de fonctionnement normal.
+    \item \lstinline|STOP| : la cellule est arrêtée.
+    \item \lstinline|ERROR| : la cellule est en erreur.
+\end{itemize}
+
+
+
+

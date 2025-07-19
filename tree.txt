@@ -1,0 +1,150 @@
+.
+├── 01_S1
+│   ├── 01_Info
+│   │   ├── Info01_Seance01
+│   │   ├── Info01_Seance01.md
+│   │   ├── fonctionsRecursives
+│   │   └── preamble_module.tex
+│   ├── 02_Autom
+│   │   ├── 03_Eval
+│   │   ├── Info01_Seance01
+│   │   ├── Info01_Seance01.md
+│   │   ├── numeration
+│   │   └── preamble_module.tex
+│   └── preamble_semestre.tex
+├── 02_S2
+│   ├── 01_Info
+│   │   ├── CAN
+│   │   ├── TIMER
+│   │   └── preamble_module.tex
+│   ├── 02_SAE
+│   │   ├── preamble_module.tex
+│   │   └── projets
+│   └── preamble_semestre.tex
+├── 03_S3
+│   ├── 06_RLI
+│   │   ├── 01_semaine1
+│   │   ├── 02_DMX
+│   │   ├── 20_DS
+│   │   ├── 98_historique
+│   │   ├── figures
+│   │   └── preamble_RLI.tex
+│   ├── 07_Reseau
+│   │   ├── 20_DS
+│   │   ├── 98_historique
+│   │   ├── figures
+│   │   └── preamble_module.tex
+│   └── preamble_Semestre.tex
+├── 04_S4
+│   ├── 01_POO
+│   │   ├── 01_cours
+│   │   ├── 02_TP
+│   │   ├── CodesysOOIP.pdf
+│   │   ├── Cours
+│   │   ├── TP_ILP.pdf
+│   │   ├── figures
+│   │   └── preamble_module.tex
+│   └── preamble_Semestre.tex
+├── 05_S5
+│   ├── 01_POO
+│   │   ├── 01_cours
+│   │   ├── 02_TP
+│   │   ├── CodesysOOIP.pdf
+│   │   ├── Cours
+│   │   ├── TP_ILP.pdf
+│   │   ├── figures
+│   │   └── preamble_module.tex
+│   ├── 02_AutomatismeRobotique
+│   │   ├── 02_TP
+│   │   ├── 03_DS
+│   │   ├── CodesysOOIP.pdf
+│   │   ├── TP_ILP.pdf
+│   │   ├── [01]cours
+│   │   ├── figures
+│   │   ├── preamble_module.tex
+│   │   └── ressources_payga
+│   └── preamble_Semestre.tex
+├── 10_Mph
+│   ├── 01_Info1
+│   │   ├── 01_eval
+│   │   └── preamble.tex
+│   └── preamble_semestre.tex
+├── LICENSE
+├── README.md
+├── UPSTI
+│   ├── README.md
+│   ├── UPSTI_Custom.sty
+│   ├── UPSTI_Document.cls
+│   ├── UPSTI_Document.sty
+│   ├── UPSTI_Document_Refactored.cls
+│   ├── UPSTI_Documentation.md
+│   ├── UPSTI_Modele_Perso.sty
+│   ├── UPSTI_Pedagogique.sty
+│   ├── UPSTI_Pedagogique_Custom.sty
+│   ├── UPSTI_Pedagogique_programme_2013.sty
+│   ├── UPSTI_Pedagogique_programme_2021.sty
+│   ├── UPSTI_SI.sty
+│   ├── UPSTI_SI_Custom.sty
+│   ├── UPSTI_Typographie.sty
+│   └── UPSTI_Typographie_Custom.sty
+├── [01]S1
+│   └── 03_Automatisme
+│       ├── numeration
+│       └── preamble_module.tex
+├── [05]S5
+│   └── 02_AutomatismeRobotique
+│       └── [02]TP
+├── amc
+│   ├── template
+│   │   ├── DOC-calage.xy
+│   │   ├── Preremplies.amc
+│   │   ├── Preremplies.pdf
+│   │   ├── Preremplies.tex
+│   │   ├── amc-compiled.amc
+│   │   ├── amc-compiled.cs
+│   │   ├── data
+│   │   ├── description.xml
+│   │   ├── liste.csv
+│   │   ├── options.xml
+│   │   └── out
+│   └── template_2
+│       ├── DOC-calage.xy
+│       ├── DOC-catalog.pdf
+│       ├── DOC-corrige.pdf
+│       ├── DOC-indiv-solution.pdf
+│       ├── DOC-sujet.pdf
+│       ├── Preremplies.amc
+│       ├── Preremplies.pdf
+│       ├── Preremplies.tex
+│       ├── Preremplies.version
+│       ├── amc-compiled.amc
+│       ├── amc-compiled.cs
+│       ├── amc-compiled.version
+│       ├── cr
+│       ├── data
+│       ├── description.xml
+│       ├── exercices
+│       ├── liste.csv
+│       ├── listeComplete.csv
+│       ├── options.xml
+│       └── preamble.tex
+├── cours.tex
+├── indent.log
+├── iutAcy
+│   ├── IUT de Cachan.zip
+│   ├── ecartsPhoto1.png
+│   ├── ecartsPhoto2.png
+│   ├── ecartsPhoto3.png
+│   ├── logoAuteur.eps
+│   ├── logoAuteur.png
+│   ├── logoAuteurCollegial.png
+│   ├── logoAuteur_old.png
+│   ├── logoLicence.png
+│   ├── logoLycee.png
+│   ├── logo_GEII_cmjn.eps
+│   ├── logo_IUT_Annecy_CMJN.jpg
+│   └── separateur.png
+├── preamble_IUT.tex
+└── tree.txt
+
+61 directories, 87 files

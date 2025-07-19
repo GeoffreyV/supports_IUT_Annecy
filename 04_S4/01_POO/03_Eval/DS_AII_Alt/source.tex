@@ -1,0 +1,63 @@
+\documentclass[QCM, noCustomPackages]{UPSTI_Document}
+\input{../../../../preamble_IUT.tex}
+\input{../../../preamble_semestre.tex}
+\input{../../preamble_module.tex}
+\input{preamble.tex}
+
+
+\documentVersion{E}
+
+\newcommand{\UPSTImessage}{test} 
+\setdefaultgroupmode{fixed}
+\setgroupmode{cours}{withoutreplacement}
+
+
+\newcommand{\sujet}{
+\exemplaire{1}{%
+\renewcommand{\UPSTImessage}{\champnom{\nom{} \prenom{} - Groupe \tp{}}} 
+\newcommand{\UPSTInumeroVersion}{55 min}
+\UPSTIbuildPage
+\setcounter{figure}{0}
+\setcounter{table}{0}
+%%% debut de l'en-tête des copies : 
+
+% \begin{center}
+% \noindent{}\fbox{\vspace*{3mm}
+%          \champnom{\Large\bf\nom{} \prenom{} - \id{}}\normalsize{}% 
+%           \vspace*{3mm}
+%       }
+% \end{center}
+\input{introduction.tex}
+\pagebreak
+
+\input{pince_prehension.tex}
+Les questions suivantes portent sur la station d'alimentation.\\
+\subsection{Classe \textit{CVerinBlocage}}
+\restituegroupe{partie1}
+\pagebreak
+\subsection{Classe \textit{CPincePrehension}}
+\input{superviseur.tex}
+\restituegroupe{superviseur}
+\pagebreak
+\section{Questions de cours}
+\restituegroupe[2]{cours}
+\clearpage
+
+}
+}
+\begin{document}
+
+
+
+\AMCassociation{\id}
+\AMCrandomseed{1237893}
+
+\input{questionCours.tex}
+\input{partie1}
+\input{partie2}
+
+\def\AMCformQuestion#1{{\sc Question #1 :}}
+\csvreader[head to column names,]{etudiants_D.csv}{}{\sujet}
+\end{document}
+
+

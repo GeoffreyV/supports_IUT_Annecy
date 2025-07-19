@@ -1,0 +1,85 @@
+
+\element{general}{
+    \begin{question}{classe}
+        Quels sont les objets fonctionnels présents dans le système de palettisation automatique ? Pour chacun, indiquez :
+        \begin{itemize}
+            \item Un court descriptif de son rôle dans le système
+            \item Les missions qu'il peut recevoir
+            \item Les états possibles
+            \item Son interface électrique
+            \item Son interface logicielle (missions qu'il peut donner)
+        \end{itemize}
+        Votre réponse devra s'appuyer sur un schéma montrant les échanges entre les objets du système. 
+        \evaluationProfLignes{10}{12}
+    \end{question}
+}
+
+\element{partie1}{
+    \begin{question}{station}
+        Proposer un nom pour chaque variable globale associées aux différents capteurs et actionneurs de la station d'alimentation. \\
+        \evaluationProfLignes{2}{4}
+    \end{question}
+}
+
+\element{partie1}{
+    \begin{question}{appel}
+        Donner la ligne permettant d'appeler un bloc fonctionnel \lstinline{oStation} de type \lstinline{CStationAlimentation} dans le programme principal. \textit{(On suppose que sa déclaration a bien été faite dans le contexte du programme.)}\\
+        \evaluationProfLignes{2}{3}
+    \end{question}
+}
+
+\element{partie1}{
+    \begin{question}{etats}
+        Proposez une structure `STRUCT` décrivant les états possibles de la station d'alimentation. \textit{Votre réponse sera la déclaration de la structure en langage ST.}
+        \evaluationProfLignes{5}{5}
+    \end{question}
+}
+
+\element{partie1}{
+    \begin{question}{missions}
+        Proposez une structure décrivant les missions qu'elle peut recevoir. \textit{Votre réponse sera la déclaration de la structure en langage ST.}
+        \evaluationProfLignes{5}{5}
+    \end{question}
+}
+
+\element{partie1}{
+    \begin{question}{missionsDeclaration}
+        Donner le contexte (déclaration des variables) de la classe \lstinline{CStationAlimentation}.\\
+        \textit{Votre réponse contiendra la déclaration de la classe, les variables d'entrées, de sorties ainsi que les variables représentant les états et les missions.}\\
+        \evaluationProfLignes{2}{5}
+    \end{question}
+}
+
+\element{partie1}{
+    \begin{question}{getSet}
+        Pour chacun des membres décrits (états et missions), définissez les propriétés `GET` et `SET` permettant de les manipuler. \\
+        \textit{Votre réponse contiendra le corps (programme) de ces accesseurs.}\\
+        \textit{Vous indiquerez également celles qui vous semblent inutiles en justifiant votre réponse.}
+        \evaluationProfLignes{5}{5}
+    \end{question}
+}
+
+\element{partie1}{
+    \\
+    Pour la station d'alimentation, on propose de coder sa mission principale (concernant le chargement de la zone tampon) à l'aide d'une action codée en SFC. 
+
+    Le nombre de rangées à charger est stockée dans une variable d'instance \lstinline{m_nbRangees} de type \lstinline{UINT}.
+
+    \begin{question}{grafcet_station}
+        Proposer un programme SFC décrivant la mission principale de la station d'alimentation.\\
+        \textbf{Ce programme ne gérera pas la mise en quinconce des rangées.}\\
+        \evaluationProfLignes{5}{15}
+    \end{question}
+}
+
+\element{partie1}{
+    \begin{question}{setoutput}
+        Proposer le corps de la fonction permettant de mettre à jour les sorties de la station d'alimentation.
+        
+        \textit{Bonus : Il est possible de gérer la mise en quinconce des rangées directement dans cette partie. Proposer la ligne de commande du vérin de butée mobile permettant de le faire.}\\
+        \evaluationProfLignes{5}{6}
+    \end{question}
+}
+
+
+

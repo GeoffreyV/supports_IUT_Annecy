@@ -1,0 +1,64 @@
+\documentclass[QCM, noCustomPackages]{UPSTI_Document}
+\input{../../../../preamble_IUT.tex}
+\input{../../../preamble_semestre.tex}
+\input{../../preamble_module.tex}
+\input{preamble.tex}
+\AMCinterIrep=0pt
+\AMCinterBrep=0pt
+\AMCinterIquest=-1pt
+\AMCinterBquest=-1pt
+\AMCpostOquest=-1pt
+
+\documentVersion{E}
+\newcommand{\UPSTInumeroVersion}{0}
+\newcommand{\UPSTImessage}{test} 
+
+\newcommand{\sujet}{
+\exemplaire{1}{%
+\renewcommand{\UPSTImessage}{\champnom{\nom{} \prenom{} - Groupe \tp{}}} 
+\renewcommand{\UPSTInumeroVersion}{\id{}}
+\UPSTIbuildPage
+\setcounter{figure}{0}
+\setcounter{table}{0}
+%%% debut de l'en-tête des copies : 
+
+% \begin{center}
+% \noindent{}\fbox{\vspace*{3mm}
+%          \champnom{\Large\bf\nom{} \prenom{} - \id{}}\normalsize{}% 
+%           \vspace*{3mm}
+%       }
+% \end{center}
+
+\UPSTIcritere[5]{q01_F4_base}{Fonctionnement du mode F4}
+\UPSTIcritere[1]{q02_F4OrdrePriorite}{Ordre des entrées selon priorité}
+\malus{m01}{Sorties Oubliées F4 (-0.5 chacune)}
+\UPSTIcritere[2]{q03_F4_lisibilite}{Lisibilité du programme F4 (Alignement)}
+\UPSTIcritere[2]{q04_F4_commentaires}{Commentaires si nécessaire F4}
+\UPSTIcritere[5]{q05_F4_Ameliorations}{Améliorations du mode F4}
+\UPSTIcritere[5]{q06_A6_base}{Fonctionnement du mode A6}
+\UPSTIcritere[2]{q07_A6_lisibilite}{Lisibilité du programme A6}
+\UPSTIcritere[2]{q08_A6_commentaires}{Mode A6 commenté judicieusement}
+\malus{m02}{Sorties Oubliées A6 (-0.5 chacune)}
+\UPSTIcritere[5]{q09_A6_ameliorations}{Améliorations du mode A6}
+\UPSTIcritere[2]{q10_A1_base}{Fonctionnement du mode A1}
+\UPSTIcritere[1]{q11_A1_lisibilite}{Lisibilité du programme A1}
+\UPSTIcritere[1]{q12_A1_commentaires}{Commentaires A1}
+\malus{m03}{Sorties Oubliées A1 (-0.5 chacune)}
+\UPSTIcritere[5]{q13_GEMMA}{Premier GMMA}
+\UPSTIcritere[5]{q14_F1}{Fonctionnement du mode F1}
+\UPSTIcritere[10]{q15_GMMA2}{Deuxième GMMA}
+\UPSTIcritere[5]{q16_D1A5}{Fonctionnement du mode D1A5}
+\UPSTIcritere[5]{q17_GMMA3}{Troisième GMMA}
+\UPSTIcritere[2]{q18_GMMA_commentaires}{Commentaires GMMA}
+\UPSTIcritere[5]{q19_GMMA_Ameliorations}{Améliorations}
+\UPSTIcritere[20]{q20_autonomie}{Autonomie}
+
+
+}
+}
+\begin{document}
+\AMCrandomseed{1237893}
+
+\def\AMCformQuestion#1{{\sc Question #1 :}}
+\csvreader[head to column names,]{groupeC.csv}{}{\sujet}
+\end{document}

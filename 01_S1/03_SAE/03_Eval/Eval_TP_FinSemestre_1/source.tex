@@ -1,0 +1,76 @@
+\documentclass[QCM, noCustomPackages]{UPSTI_Document}
+\input{../../../../preamble_IUT.tex}
+\input{../../../preamble_semestre.tex}
+\input{../../preamble_module.tex}
+\input{preamble.tex}
+\AMCinterIrep=0pt
+\AMCinterBrep=0pt
+\AMCinterIquest=-1pt
+\AMCinterBquest=-1pt
+\AMCpostOquest=-1pt
+
+\documentVersion{E}
+\newcommand{\UPSTInumeroVersion}{0}
+\newcommand{\UPSTImessage}{test} 
+
+\newcommand{\sujet}{
+\exemplaire{1}{%
+\renewcommand{\UPSTImessage}{\champnom{\nom{} \prenom{} - Groupe \tp{}}} 
+
+\UPSTIbuildPage
+\setcounter{figure}{0}
+\setcounter{table}{0}
+
+\UPSTIcritere[4]{c01_page_garde}{Page de garde}
+\vspace{-2em}
+\begin{multicols}{3}
+\begin{itemize}
+    \item Logos IUT et GEII
+    \item Photo d'illustration du thème
+    \item Titre
+    \item Noms et prénoms
+    \item Série
+    \item Année universitaire
+    \item Noms et prénoms des tuteurs (enseignants encadrants)
+\end{itemize}
+\end{multicols}
+\UPSTIcritere[0.5]{c02_sommaire}{Sommaire paginé}
+\UPSTIcritere[1]{c03_intro}{Introduction (en anglais)}
+\UPSTIcritere[1]{c04_cdc}{Cahier des charges (en anglais)}
+\textbf{---}
+
+\UPSTIcritere[1]{c05_tl081}{Schéma utilisant un TL081}
+\UPSTIcritere[1]{c06_resistances}{Calcul des résistances}
+\UPSTIcritere[1.5]{c07_tl081}{Explication du non respect du cahier des charges}
+\textbf{---}
+
+\UPSTIcritere[1]{c08_fph}{Filtre passe haut}
+\UPSTIcritere[0.5]{c09_amplification_tension}{Amplification de tension}
+\UPSTIcritere[0.5]{c10_amplification_courant}{Amplification en courant}
+\UPSTIcritere[0.5]{c11_condensateurs}{Condensateurs de découplage}
+\textbf{---}
+
+\UPSTIcritere[2]{c12_puissance}{Calcul de la puissance}
+\textbf{---}
+
+\UPSTIcritere[2]{c13_schema}{Schéma structurel complet du karaoke}
+\UPSTIcritere[2]{c14_fiche}{Fiche caractéristique de l'ampli audio}
+\begin{multicols}{3}
+    \begin{itemize}
+        \item Puissance max
+        \item Alimentation requise
+        \item Rendement
+        \item Amplification en décibels
+        \item Type d'amplification (mono ou stéréo)
+    \end{itemize}
+\end{multicols}
+\UPSTIcritere[1]{c15_annexe}{Alimentation trouvée sur Internet}
+
+
+}
+}
+\begin{document}
+\AMCrandomseed{1237893}
+\def\AMCformQuestion#1{{\sc Question #1 :}}
+\csvreader[head to column names,]{etudiants_D.csv}{}{\sujet}
+\end{document}

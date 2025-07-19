@@ -6,7 +6,7 @@ Ce TP portera sur la gestion d'un luminaire RGB DALI à partir d'un automate Wag
 Afin de disposer du réseau DALI sur la structure de commande Wago, celle-ci doit être équipée, au minimum : 
 
 \begin{itemize}
-    \item D'un module de commande Wago. 
+    \item D'un module de commande Wago, en l'espèce l'un de ces deux modules : 
     \begin{itemize}
         \item 750-841 sans KNX
         \item 750-849 avec KNX
@@ -45,11 +45,11 @@ Le \textbf{sélecteur à 3 boutons} fournit les informations \textbf{ixSelDown} 
     \end{tabular} 
 \end{center}   
 \end{minipage}
-\begin{UPSTIactivite}[2][Architecture du système][][][Préparation]
+\begin{UPSTIPreparation}[Architecture du système]
     \label{act:archi}
     \UPSTIquestion{Dessiner l'architecture matérielle faisant apparaitre les éléments Wago ainsi que les boutons poussoirs et les trois luminaires Rouge, Vert et Bleu}
     \vspace{7cm}
-\end{UPSTIactivite}
+\end{UPSTIPreparation}
 
 D’un point de vue logiciel, on dispose de la bibliothèque \textit{DALI\_02.lib} qui offre plusieurs blocs fonctionnels
 permettant d’établir les différentes commandes du bus (commande d’éclairage, de configuration, etc …) plus des
